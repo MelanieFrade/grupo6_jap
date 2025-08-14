@@ -1,3 +1,14 @@
+/*let sesionIniciada;
+document.addEventListener("DOMContentLoaded", function(){
+    if(sesionIniciada == false){
+        window.location.href = "login.html";
+    }
+})*/
+if (localStorage.getItem("estaLogueado") !== "true") {
+    window.location.href = "login.html"; 
+}
+
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
