@@ -191,3 +191,11 @@ a.custom-card:hover {
 body{
   background-color: #9bc7c7;
 }
+.zoom-hover {
+  transition: transform 1s ease, box-shadow 0.3s ease;
+}
+
+.zoom-hover:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,1);
+}

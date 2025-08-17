@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
         contenedorListado.innerHTML += `
         <div class="product-item d-flex align-items-center mb-3 p-3 bg-white rounded shadow-sm hover-shadow">
-        <img src="${producto.image}" class="img-thumbnail me-3" style= "width:150px; height:auto;" alt="${producto.name}" />
+        <img src="${producto.image}" 
+        class="img-thumbnail me-3 rounded shadow-sm zoom-hover" 
+        style= "width:150px; height:auto;" alt="${producto.name}" />
         <div>
       <h3>${producto.name}</h3>
       <p>${producto.description}</p>
