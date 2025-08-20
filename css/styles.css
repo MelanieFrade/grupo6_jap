@@ -196,6 +196,6 @@ body{
 }
 
 .zoom-hover:hover {
-  transform: scale(1.15);
+  transform: scale(1.10);
   box-shadow: 0 8px 20px rgba(0,0,0,1);
 }
