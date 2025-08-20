@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap Icons -->
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
-  <!-- Bootstrap CSS -->
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Estilos propios -->
+
   <link href="css/styles.css" rel="stylesheet">
   <title>Login</title>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" id="container">
     
-    <!-- Login -->
+  
     <div class="form-box login">
       <form action="#">
         <h1>Login</h1>
@@ -45,7 +45,6 @@
       </form>
     </div>
 
-    <!-- Registro -->
     <div class="form-box register">
       <form action="#">
         <h1>Registro</h1>
@@ -75,19 +74,23 @@
         </div>
       </form>
     </div>
+
     <div class="toggle-box">
-      <div class="toggle-panel togglw-left">
+      <div class="toggle-panel toggle-left">
         <h1>¡Bienvenidx!</h1>
         <p>¿No tienes cuenta?</p>
         <button class="btn register-btn">Regístrate</button>
-  
-  
-  
+      </div>
+
+      <div class="toggle-panel toggle-right">
+        <h1>Hola otra vez!</h1>
+        <p>¿Ya tienes una cuenta?</p>
+        <button class="btn login-btn">Inicia Sesión</button>
+      </div>
+    </div>
   </div>
+
   
-
-
-  <!-- Script -->
   <script src="js/login.js"></script>
 </body>
 </html>
