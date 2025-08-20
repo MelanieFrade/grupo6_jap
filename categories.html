@@ -38,13 +38,14 @@
   </nav>
   <main class="pb-5">
     <div class="text-center p-4">
-      <h2>Categorías</h2>
+      <h2 id="c1" class="text-center fw-bold mb-4 text-light">Categorías</h2>
+
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
     <div class="container">
       <div class="row">
         <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+          <div class="btn-group btn-group-toggle mb-4 " data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc">
             <label class="btn btn-light" for="sortAsc">A-Z</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc">
@@ -61,15 +62,15 @@
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control btn btn-outline-dark" type="number" placeholder="min." id="rangeFilterCountMin">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-control btn btn-outline-dark" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-outline-dark" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-outline-dark" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
