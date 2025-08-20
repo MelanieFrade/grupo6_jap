@@ -192,21 +192,44 @@ body{
   background-color: #154c56;
 }
 .zoom-hover {
-  transition: transform 1s ease, box-shadow 0.3s ease;
+  transition: color 2s ease;
+  cursor:pointer;
 }
 
 .zoom-hover:hover {
-  transform: scale(1.10);
-  box-shadow: 0 8px 20px rgba(0,0,0,1);
+  color: #fff4e5 !important;
 }
 
 .bg-black { background-color: #d9b382 ; }
 
-imagen123 {
+.imagen123 {
   width: 200px;
   height: auto;
 }
 
 .colorcete {
   background-color: #186D7f;
+}
+#c1 {
+  transition: color 2s ease;
+  cursor: pointer;
+}
+#c1:hover {
+  color: #186D7f !important;
+}
+.img-zoom{
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+}
+.img-zoom:hover {
+  transform: scale(1.05);
+}
+#vender {
+  transition: color 2s ease;
+  cursor: pointer;
+}
+#vender:hover {
+  display: inline;
+  color: #186D7f !important;
 }

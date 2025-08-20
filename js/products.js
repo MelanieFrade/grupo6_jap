@@ -24,15 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
       productos.forEach((producto) => {
     
         contenedorListado.innerHTML += `
-        <div class="product-item d-flex align-items-center mb-3 p-3 colorcete rounded shadow-sm hover-shadow">
+        <div class="product-item d-flex  align-items-center mb-3 p-3 colorcete rounded shadow-sm img-zoom">
         <img src="${producto.image}" 
-        class="me-3 rounded shadow-lg zoom-hover img -fluid" 
+        class="me-3 rounded shadow-lg img-fluid img-zoom" 
         style= "width:150px; height:auto;" alt="${producto.name}" />
         <div>
-      <h3 class=" text-black">${producto.name}</h3>
-      <p class="text-grey lead" >${producto.description}</p>
-      <p class=  text-black><strong>Precio:</strong> $${producto.cost}</p>
-      <p><strong>Cantidad vendida:</strong> ${producto.soldCount}</p>
+      <h3 class="text-black fw-bold">${producto.name}</h3>
+      <p class="zoom-hover text-grey lead">${producto.description}</p>
+      <p class="text-black zoom-hover"><strong>Precio:</strong> $${producto.cost}</p>
+      <p class="zoom-hover"><strong>Cantidad vendida:</strong> ${producto.soldCount}</p>
       </div>
       </div>
       `;
