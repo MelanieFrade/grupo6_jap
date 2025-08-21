@@ -1,16 +1,3 @@
-
-const container = document.getElementById("container");
-const registerBtn = document.querySelector(".register-btn");
-const loginBtn = document.querySelector(".login-btn");
-
-registerBtn.addEventListener("click", () => {
-  container.classList.add("active");
-});
-
-loginBtn.addEventListener("click", () => {
-  container.classList.remove("active");
-});
-
 document.getElementById("btnPrimario").addEventListener("click", function() {
     let username = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
@@ -31,4 +18,3 @@ document.getElementById("btnPrimario").addEventListener("click", function() {
 document.getElementById("btnSecundario").addEventListener("click", function() {
     window.location.href = "register.html";
 });
-
