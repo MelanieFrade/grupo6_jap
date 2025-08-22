@@ -18,17 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((producto) => {
       // console.log(producto);
       // para recorrer la listqa de productos de la categoría indicada
-      for (let i = 0; i < producto.products.length; i++) {
-        /* accedo a la categoría, dentro está products, que sería cada uno de los 
-        productos, por eso se hace products[i] para ir a cada uno de ellos y luego
-        accedo a la propiedad de cada uno */
+      const productos = producto.products;  
+      // console.log(productos);
+      // se recorre el listado de productos y se muestra en el contenedor
+      productos.forEach((producto) => {
+    
         contenedorListado.innerHTML += `
-      <h3>${producto.products[i].name}</h3>
-      <p>${producto.products[i].description}</p>
-      <p>$ ${producto.products[i].cost}</p>
-      <p>Cantidad vendida: ${producto.products[i].soldCount}</p>
-      <img src="${producto.products[i].image}">
+        <div class="product-item d-flex align-items-center mb-3 p-3 bg-white rounded shadow-sm hover-shadow">
+        <img src="${producto.image}" 
+        class="img-thumbnail me-3 rounded shadow-sm zoom-hover" 
+        style= "width:150px; height:auto;" alt="${producto.name}" />
+        <div>
+      <h3>${producto.name}</h3>
+      <p>${producto.description}</p>
+      <p><strong>Precio:</strong> $${producto.cost}</p>
+      <p><strong>Cantidad vendida:</strong> ${producto.soldCount}</p>
+      </div>
+      </div>
       `;
-      }
     });
+})
+.catch((error) => {
+  // si hay un error, se muestra en consola
+  contenedorListado.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
 });
+}); 
