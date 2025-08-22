@@ -24,19 +24,25 @@ document.addEventListener("DOMContentLoaded", () => {
       productos.forEach((producto) => {
     
         contenedorListado.innerHTML += `
-        <div class="product-item d-flex align-items-center mb-3 p-3 bg-white rounded shadow-sm hover-shadow">
-        <img src="${producto.image}" 
-        class="img-thumbnail me-3 rounded shadow-sm zoom-hover" 
-        style= "width:150px; height:auto;" alt="${producto.name}" />
-        <div>
-      <h3>${producto.name}</h3>
-      <p>${producto.description}</p>
-      <p><strong>Precio:</strong> $${producto.cost}</p>
-      <p><strong>Cantidad vendida:</strong> ${producto.soldCount}</p>
-      </div>
-      </div>
-      `;
-    });
+    <div class="list-group-item zoom-hover img-zoom">
+      <div class="container-fluid p-1">
+          <div class="row g-3 align-items-center">
+              <div class="col-3">
+                <img src="${producto.image}" alt="${producto.name}" class="img-fluid rounded" style="width:100%; height:auto;" />
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between mb-2">
+                        <h4 class="mb-1 text-black fs-3">${producto.name}</h4>
+                        <small class="text-muted">Vendidos: ${producto.soldCount}</small>
+                    </div>
+                    <p class="mb-1 fs-3">${producto.description}</p>
+                    <p class="text-black fs-4"><strong>Precio:</strong> $${producto.cost}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+});
 })
 .catch((error) => {
   // si hay un error, se muestra en consola
