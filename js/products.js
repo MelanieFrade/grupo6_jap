@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       productos.forEach((producto) => {
     
         contenedorListado.innerHTML += `
-        <div class="product-item d-flex  align-items-center mb-3 p-3 colorcete rounded shadow-sm img-zoom">
+        <div class="product-item d-flex  align-items-center mb-3 p-3 bg-light rounded shadow-sm img-zoom forma">
         <img src="${producto.image}" 
         class="me-3 rounded shadow-lg img-fluid img-zoom" 
         style= "width:150px; height:auto;" alt="${producto.name}" />

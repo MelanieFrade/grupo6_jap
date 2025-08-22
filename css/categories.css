@@ -1,0 +1,50 @@
+body {
+  background-color: #154c56;
+}
+main .container {
+  padding-top: 30px; /* deja espacio arriba */
+  padding-bottom: 30px;
+}
+
+.zoom-hover {
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.zoom-hover:hover {
+  color: #d9b382 !important;
+}
+
+.img-zoom {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.img-zoom:hover {
+  transform: scale(1.05);
+}
+
+.list-group-item {
+  width: 100%;
+  max-width: 1173px;
+  padding: 30px;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.list-group-item:hover {
+  transform: translateY(-3px);
+}
+
+.list-group-item img {
+  border-radius: 20px;
+}
+
+.textoacortado {
+  white-space: normal;
+  word-wrap: break-word;
+}
