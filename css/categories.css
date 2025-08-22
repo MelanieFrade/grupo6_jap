@@ -21,7 +21,7 @@ main .container {
 }
 
 .img-zoom:hover {
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .list-group-item {
