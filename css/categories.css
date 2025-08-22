@@ -7,7 +7,7 @@ main .container {
 }
 
 .zoom-hover {
-  transition: color 0.3s ease;
+  transition: color 0.3s ease !;
   cursor: pointer;
 }
 
@@ -47,4 +47,13 @@ main .container {
 .textoacortado {
   white-space: normal;
   word-wrap: break-word;
+}
+.navbar .nav-link {
+  color: black !important;
+  font-weight: bold;
+}
+#c1 {
+  color: black !important;
+  font-size: 300%;
+  font-weight: bolder;
 }
