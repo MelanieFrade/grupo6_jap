@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   let contenedorListado = document.getElementById("listado");
 
+  // OBTENGO LA CATEGORÍA SELECCIONADA
+  const catID = localStorage.getItem("catID");
+  let url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
+
   // VER COMO CAMBIAR EL FETCH PARA QUE SE INDIQUE LA CATEGORIA A MOSTRAR
 
-  fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+  fetch(url)
     // Manejo de la respuesta del servidor
     .then((response) => {
       // promesa, para que haga cosas mientras espera que ocurra
@@ -18,11 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((producto) => {
       // console.log(producto);
       // para recorrer la listqa de productos de la categoría indicada
-      const productos = producto.products;  
+      const productos = producto.products;
       // console.log(productos);
       // se recorre el listado de productos y se muestra en el contenedor
       productos.forEach((producto) => {
-    
         contenedorListado.innerHTML += `
     <div class="list-group-item zoom-hover img-zoom">
       <div class="container-fluid p-1">
@@ -42,10 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
     `;
+      });
+    })
+    .catch((error) => {
+      // si hay un error, se muestra en consola
+      contenedorListado.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
+    });
 });
-})
-.catch((error) => {
-  // si hay un error, se muestra en consola
-  contenedorListado.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
-});
-}); 
