@@ -48,12 +48,28 @@ main .container {
   white-space: normal;
   word-wrap: break-word;
 }
-.navbar .nav-link {
-  color: black !important;
-  font-weight: bold;
-}
+
 #c1 {
   color: black !important;
   font-size: 300%;
   font-weight: bolder;
 }
+nav a {
+  text-decoration: none;
+}
+
+.site-header a {
+  color: white;
+  transition: ease-in-out color .15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+.cursor-active {
+  cursor: pointer;
+}
+
+
+
