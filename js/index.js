@@ -1,4 +1,4 @@
-if (localStorage.getItem("estaLogueado") !== "true") {
+if (sessionStorage.getItem("estaLogueado") !== "true") {
     window.location.href = "login.html"; 
 }
 

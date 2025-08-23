@@ -30,3 +30,32 @@ document.getElementById("btnLogin").addEventListener("click", function (e) {
   sessionStorage.setItem("estaLogueado", "true");
   window.location.href = "index.html";
 });
+
+// VALIDACIÓN REGISTRO
+document.getElementById("btnRegister").addEventListener("click", function (e) {
+  e.preventDefault();
+  let username = document.getElementById("register-username").value.trim();
+  let email = document.getElementById("register-email").value.trim();
+  let password = document.getElementById("register-password").value.trim();
+
+  if (username === "" || email === "" || password === "") {
+    alert("Por favor, complete todos los campos.");
+    return;
+  }
+  if (username.length < 5) {
+    alert("El nombre de usuario debe tener al menos 5 caracteres.");
+    return;
+  }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Por favor, ingrese un correo electrónico válido.");
+    return;
+  }
+  if (password.length < 5) {
+    alert("La contraseña debe tener al menos 5 caracteres.");
+    return;
+  }
+  alert("Registro exitoso. Ahora puede iniciar sesión.");
+  sessionStorage.setItem("estaLogueado", "true");
+  window.location.href = "index.html";
+});
