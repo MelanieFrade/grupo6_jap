@@ -18,17 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((producto) => {
       // console.log(producto);
       // para recorrer la listqa de productos de la categoría indicada
-      for (let i = 0; i < producto.products.length; i++) {
-        /* accedo a la categoría, dentro está products, que sería cada uno de los 
-        productos, por eso se hace products[i] para ir a cada uno de ellos y luego
-        accedo a la propiedad de cada uno */
+      const productos = producto.products;  
+      // console.log(productos);
+      // se recorre el listado de productos y se muestra en el contenedor
+      productos.forEach((producto) => {
+    
         contenedorListado.innerHTML += `
-      <h3>${producto.products[i].name}</h3>
-      <p>${producto.products[i].description}</p>
-      <p>$ ${producto.products[i].cost}</p>
-      <p>Cantidad vendida: ${producto.products[i].soldCount}</p>
-      <img src="${producto.products[i].image}">
-      `;
-      }
-    });
+    <div class="list-group-item zoom-hover img-zoom">
+      <div class="container-fluid p-1">
+          <div class="row g-3 align-items-center">
+              <div class="col-3">
+                <img src="${producto.image}" alt="${producto.name}" class="img-fluid rounded" style="width:100%; height:auto;" />
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between mb-2">
+                        <h4 class="mb-1 text-black fs-3">${producto.name}</h4>
+                        <small class="text-muted">Vendidos: ${producto.soldCount}</small>
+                    </div>
+                    <p class="mb-1 fs-3">${producto.description}</p>
+                    <p class="text-black fs-4"><strong>Precio:</strong> $${producto.cost}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
 });
+})
+.catch((error) => {
+  // si hay un error, se muestra en consola
+  contenedorListado.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
+});
+}); 
