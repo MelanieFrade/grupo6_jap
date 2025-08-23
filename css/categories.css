@@ -7,7 +7,7 @@ main .container {
 }
 
 .zoom-hover {
-  transition: color 0.3s ease;
+  transition: color 0.5s ease;
   cursor: pointer;
 }
 
@@ -48,3 +48,28 @@ main .container {
   white-space: normal;
   word-wrap: break-word;
 }
+
+#c1 {
+  color: black;
+  font-size: 300%;
+  font-weight: bolder;
+}
+nav a {
+  text-decoration: none;
+}
+
+.site-header a {
+  color: white;
+  transition: ease-in-out color .15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+.cursor-active {
+  cursor: pointer;
+}
+
+
+
