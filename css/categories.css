@@ -35,6 +35,13 @@ main .container {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
+.list-group-item:first-child {
+  border-radius: 30px;
+  
+}
+.list-group-item:last-child {
+  border-radius: 30px;
+}
 
 .list-group-item:hover {
   transform: translateY(-3px);
