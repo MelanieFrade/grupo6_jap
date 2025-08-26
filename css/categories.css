@@ -26,7 +26,7 @@ main .container {
 
 .list-group-item {
   width: 100%;
-  max-width: 1173px;
+  max-width: 200%;
   padding: 30px;
   margin: 20px auto;
   background-color: white;
@@ -34,6 +34,13 @@ main .container {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
+}
+.list-group-item:first-child {
+  border-radius: 30px;
+  
+}
+.list-group-item:last-child {
+  border-radius: 30px;
 }
 
 .list-group-item:hover {
