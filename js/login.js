@@ -28,6 +28,7 @@ document.getElementById("btnLogin").addEventListener("click", function (e) {
     return;
   }
   sessionStorage.setItem("estaLogueado", "true");
+  sessionStorage.setItem("username", username);
   window.location.href = "index.html";
 });
 
