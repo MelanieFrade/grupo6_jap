@@ -38,8 +38,9 @@ document.getElementById("btnRegister").addEventListener("click", function (e) {
   let username = document.getElementById("register-username").value.trim();
   let email = document.getElementById("register-email").value.trim();
   let password = document.getElementById("register-password").value.trim();
+  let confirmPassword = document.getElementById("confirm-password").value.trim();
 
-  if (username === "" || email === "" || password === "") {
+  if (username === "" || email === "" || password === "" || confirmPassword === "") {
     alert("Por favor, complete todos los campos.");
     return;
   }
@@ -56,7 +57,12 @@ document.getElementById("btnRegister").addEventListener("click", function (e) {
     alert("La contraseña debe tener al menos 5 caracteres.");
     return;
   }
+  if (password !== confirmPassword) {
+    alert("Las contraseñas no coinciden.");
+    return;
+  }
   alert("Registro exitoso. Ahora puede iniciar sesión.");
   sessionStorage.setItem("estaLogueado", "true");
+  sessionStorage.setItem("username", username);
   window.location.href = "index.html";
 });
