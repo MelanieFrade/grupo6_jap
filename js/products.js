@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="list-group-item zoom-hover img-zoom">
       <div class="container-fluid p-1">
           <div class="row g-3 align-items-center">
-              <div class="col-3">
+              <div class="col-12 col-md-3 text-center">
                 <img src="${producto.image}" alt="${producto.name}" class="img-fluid rounded" style="width:100%; height:auto;" />
                 </div>
                 <div class="col">
