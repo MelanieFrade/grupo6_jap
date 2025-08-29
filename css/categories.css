@@ -101,7 +101,7 @@ nav a {
 }
 @media (max-width: 576px) {
   .btn-group {
-    display: inline-blockgi;
+    display: inline-block;
     flex-direction: column;
     width: auto;
   }
