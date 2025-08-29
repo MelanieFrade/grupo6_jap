@@ -101,12 +101,12 @@ nav a {
 }
 @media (max-width: 576px) {
   .btn-group {
-    display: flex;
+    display: inline-blockgi;
     flex-direction: column;
-    width: 100%;
+    width: auto;
   }
   .btn-group .btn {
-    width: 100%;
+    width: auto;
     margin-bottom: 5px;
   }
   .list-group-item .col {
