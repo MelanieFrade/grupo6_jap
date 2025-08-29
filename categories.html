@@ -41,7 +41,7 @@
     <div class="text-center p-4">
       <h2 id="c1" class="text-center">Categorías</h2>
 
-      <p class="lead fs-2 fw-bold text-dark">Verás aquí todas las categorías del sitio.</p>
+      
     </div>
     <div class="container">
       <div class="row">
@@ -56,26 +56,21 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container ">
-          <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-end my-2 fs-5 fw-bold text-white ">Cant.</p>
-            </div>
-            <div class="col">
-              <input class="form-control btn btn-outline-light" type="number" placeholder="min." id="rangeFilterCountMin">
-            </div>
-            <div class="col">
-              <input class="form-control btn btn-outline-light text-light fw-bold" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-outline-light" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-outline-light" id="clearRangeFilter">Limpiar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+     <div class="row mb-1">
+  <div class="col-12 col-lg-6 ms-lg-auto">
+    <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
+      <span class="fw-bold text-white">Cant.</span>
+      <input type="number" id="rangeFilterCountMin" class="form-control form-control-sm w-auto" style="max-width:70px"
+        placeholder="min.">
+      <input type="number" id="rangeFilterCountMax" class="form-control form-control-sm w-auto" style="max-width:70px"
+        placeholder="máx.">
+      <div class="btn-group">
+        <button class="btn btn-outline-light btn-sm" id="rangeFilterCount">Filtrar</button>
+        <button class="btn btn-outline-light btn-sm" id="clearRangeFilter">Limpiar</button>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
       <div class="row">
         <div class="list-group" id="cat-list-container">

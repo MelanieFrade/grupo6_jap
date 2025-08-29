@@ -26,22 +26,17 @@ main .container {
 
 .list-group-item {
   width: 100%;
-  padding: 30px;
+  padding: 20px;
   margin: 20px auto; 
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
-}
-@media (max-width: 576) {
-  .list-group-item img {
-    max-width: 120px;
-  }
-} .list-group-item {
   border-radius: 30px;
-  
 }
+
 .list-group-item:first-child {
   border-radius: 30px;
+  
 }
 .list-group-item:last-child {
   border-radius: 30px;
@@ -113,5 +108,15 @@ nav a {
   .btn-group .btn {
     width: 100%;
     margin-bottom: 5px;
+  }
+  .list-group-item .col {
+    position: relative;
+
+}
+ .list-group-item .col > .d-flex small.text-muted {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 1.3em ;
   }
 }
