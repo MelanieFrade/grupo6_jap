@@ -1,10 +1,8 @@
-
 .jumbotron,
 .card-body,
 .container,
 .site-header {
   font-family: 'Verdana', serif !important;
-  
 }
 
 .jumbotron .display-4 {
@@ -30,20 +28,34 @@ nav a {
   }
 }
 
+/* Escritorio: dos imágenes lado a lado */
 .jumbotron {
   height: 50vh;
-  padding: 5em inherit;
+  padding: 5em 0;
   margin-bottom: 0;
   background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url(../img/cover_back1.png) left center no-repeat,
+    url(../img/cover_back2.png) right center no-repeat;
+  background-size: 50% 100%, 50% 100%;
   color: black;
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
+/* Tablet (iPad) y celular: las imágenes se apilan verticalmente */
+@media (max-width: 1024px) {
+  .jumbotron {
+    height: 50vh;
+    /* mantiene proporción */
+    padding: 3em 0;
+    background: url(../img/cover_back1.png) top center no-repeat,
+      url(../img/cover_back2.png) bottom center no-repeat;
+    background-size: 100% 50%, 100% 50%;
+    background-attachment: scroll;
+  }
+}
+
+/* Ajuste de padding para pantallas grandes */
+@media (min-width: 1025px) {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
@@ -190,6 +202,7 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-body{
+
+body {
   background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
 }
