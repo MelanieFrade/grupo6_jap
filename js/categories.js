@@ -53,15 +53,16 @@ function showCategoriesList(){
             <div onclick="setCatID(${category.id})" class="list-group-item zoom-hover img-zoom">
             <div class="container-fluid p-1">
                 <div class="row g-3 align-items-center ">
-                    <div class="col-3">
-                        <img src="${category.imgSrc}" alt="${category.description}"class="img-fluid rounded-start" style="width:100%; height:auto;"/>
+                    <div class="col-12 col-md-3 text-center">
+                        <img src="${category.imgSrc}" alt="${category.description}"class="img-fluid " style="width:100%; height:auto;"/>
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between mb-2">
                             <h4 class="mb-1 text-black fs-3">${category.name}</h4>
-                            <small class="text-muted">${category.productCount} artículos</small>
+                            <small class="text-muted d-none d-md-block">${category.productCount} artículos</small>
                         </div>
                         <p class="mb-1 fs-3  ">${category.description}</p>
+                        <small class="text-muted text-end mt-2 d-block d-md-none">${category.productCount} artículos</small>
                     </div>
                 </div>
             </div>
