@@ -98,8 +98,6 @@ nav a {
     flex: 100%;      
     max-width: 100%;  
   }
-}
-@media (max-width: 576px) {
   .btn-group {
     display: inline-block;
     flex-direction: column;
