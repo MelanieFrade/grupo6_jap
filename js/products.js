@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // se recorre el listado de productos y se muestra en el contenedor
       productos.forEach((producto) => {
         contenedorListado.innerHTML += `
-    <div class="list-group-item zoom-hover img-zoom">
+    <div class="list-group-item zoom-hover img-zoom" data-id="${producto.id}">
       <div class="container-fluid p-1">
           <div class="row g-3 align-items-center">
               <div class="col-12 col-md-3 text-center">
@@ -46,9 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
     `;
       });
+      
     })
     .catch((error) => {
       // si hay un error, se muestra en consola
       contenedorListado.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
     });
+    // GUARDO EL ID DEL PRODUCTO CLICKEADO
+      contenedorListado.addEventListener("click", (e) => {
+        let card = e.target.closest("[data-id]");
+        if (card) {
+          let idSeleccionado = card.getAttribute("data-id");
+          localStorage.setItem("productoID", idSeleccionado);
+          window.location.href = "product-info.html"; // página de detalle
+        }
+      });
 });
