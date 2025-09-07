@@ -50,11 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
           <div class="col flex">
-            <h4 class="mb-1 text-black fs-3"><strong>${infoProducto.name}</strong></h4>
+            <h4 class="mb-1 text-black fs-3"><strong>${
+              infoProducto.name
+            }</strong></h4>
               <p>${infoProducto.description}</p>
               <p><strong>${infoProducto.currency} ${
         infoProducto.cost
-      }</strong></p>
+      } </strong></p>
+              <p><strong>Categoría:</strong> ${infoProducto.category}</p>
               <p><strong>Vendidos:</strong> ${infoProducto.soldCount}</p>
           </div>
         </div>
