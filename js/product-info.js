@@ -19,31 +19,60 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((infoProducto) => {
       // console.log(infoProducto);
-      // se coloca un grid para que las imagenes queden a un lado
-      // y el texto al otro
-      // la idea sería implementar un carrusel con las imágenes 
       contenedorProducto.innerHTML = `
-        <div class="row">
+        <div id="cardProducto" class="row g-3 flex-column flex-lg-row">
           <div class="col">
-            <div class="d-flex gap-2">
-                ${infoProducto.images
-                  .map(
-                    (img) =>
-                      `<img src="${img}" alt="${infoProducto.name}" width="150"/>`
-                  )
-                  .join("")}
+            <div class="d-flex gap-2 justify-content-center">
+              <div class="text-center"> 
+                
+                <!-- Imagen principal -->
+                <div class="mb-3">
+                  <img id="imgPrincipal" src="${infoProducto.images[0]}" 
+                    alt="${infoProducto.name}" 
+                    class="img-fluid rounded border" 
+                  />
+                </div>
+
+                <!-- Miniaturas -->
+                <div id="carrusel" class="d-flex justify-content-center gap-2 flex-wrap">
+                  ${infoProducto.images
+                    .map(
+                      (img, index) => `
+                      <img src="${img}" 
+                        alt="thumb ${index}" 
+                        class="img-thumbnail thumb" 
+                        data-img="${img}"
+                      />`
+                    )
+                    .join("")}
+                </div>
               </div>
+            </div>
           </div>
-          <div class="col">
-            <h4 class="mb-1 text-black fs-3">${infoProducto.name}</h4>
+          <div class="col flex">
+            <h4 class="mb-1 text-black fs-3"><strong>${infoProducto.name}</strong></h4>
               <p>${infoProducto.description}</p>
-              <p><strong>Precio:</strong> ${infoProducto.currency} ${
-              infoProducto.cost
-            }</p>
+              <p><strong>${infoProducto.currency} ${
+        infoProducto.cost
+      }</strong></p>
               <p><strong>Vendidos:</strong> ${infoProducto.soldCount}</p>
           </div>
         </div>
       `;
+      // PARA EL MANEJO DEL CARRUSEL
+      const imgPrincipal = document.getElementById("imgPrincipal");
+      const imgChicas = document.querySelectorAll("#carrusel .thumb");
+
+      imgChicas.forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          // al clickear la imagen, cambia la principal
+          imgPrincipal.src = thumb.dataset.img;
+
+          // resaltar la miniatura seleccionada
+          imgChicas.forEach((t) => t.classList.remove("border-primary"));
+          thumb.classList.add("border-primary");
+        });
+      });
     })
     .catch((error) => {
       // si hay un error, se muestra en consola
