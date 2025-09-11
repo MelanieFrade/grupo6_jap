@@ -21,7 +21,11 @@
 <body>
   <div id="nav"></div>
   <script src="js/nav.js"></script>
-   <div class="container">
+  <main class="pb-5">
+    <div class="text-center">
+      <h2 id="c1" class="text-center">Productos</h2>
+    </div>
+    <div class="container">
       <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4 " data-bs-toggle="buttons">
@@ -34,26 +38,27 @@
           </div>
         </div>
       </div>
-     <div class="row mb-1">
-  <div class="col-12 col-lg-6 ms-lg-auto">
-    <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
-      <span class="fw-bold text-white">Cant.</span>
-      <input type="number" id="rangeFilterCountMin" class="form-control form-control-sm w-auto" style="max-width:70px"
+      <div class="row mb-1">
+        <div class="col-12 col-lg-6 ms-lg-auto">
+          <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
+            <span class="fw-bold text-white">Cant.</span>
+            <input type="number" id="rangeFilterCountMin" class="form-control form-control-sm w-auto" style="max-width:70px"
         placeholder="min.">
-      <input type="number" id="rangeFilterCountMax" class="form-control form-control-sm w-auto" style="max-width:70px"
+            <input type="number" id="rangeFilterCountMax" class="form-control form-control-sm w-auto" style="max-width:70px"
         placeholder="máx.">
-      <div class="btn-group">
-        <button class="btn btn-outline-light btn-sm" id="rangeFilterCount">Filtrar</button>
-        <button class="btn btn-outline-light btn-sm" id="clearRangeFilter">Limpiar</button>
+            <div class="btn-group">
+              <button class="btn btn-outline-light btn-sm" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-outline-light btn-sm" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-      </div>
-    <main data-bs-target="pb-5 container">
-      <!-- se le agregó id al div, para ubicar el listado -->
+    <div class="row">
       <div  class="container" id="listado">
+        <!-- DONDE SE MUESTRAN LOS DATOS -->
       </div>
+    </div>
     </main>
     <footer class="text-muted">
       <div class="container">
