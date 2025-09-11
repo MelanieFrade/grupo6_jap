@@ -206,3 +206,18 @@ a.custom-card:hover {
 body {
   background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
 }
+#buscador { 
+  display: block; 
+  margin: 20px auto; 
+  padding: 10px; 
+  width: 80%; 
+  max-width: 400px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  
+}
+#buscador:focus {
+  outline: none;
+  border-color: #007bff;      /* color azul al enfocar */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
