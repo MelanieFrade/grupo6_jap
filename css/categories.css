@@ -4,6 +4,7 @@ body {
 main .container {
   padding-top: 30px; /* deja espacio arriba */
   padding-bottom: 30px;
+  
 }
 
 .zoom-hover {
@@ -24,23 +25,23 @@ main .container {
   transform: scale(1.15);
 }
 
-.list-group-item  {
+.list-group-item {
   width: 90%;
   padding: 10px;
-  margin: 30px; 
+  margin: 30px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
-  border-radius: 30px;;
+  border: 2px solid #1b6d7f;
+  border-radius: 30px;
 }
 .list-group-item img {
-  max-width: 30vh ;  /* la imagen nunca pasa de 120px */
-  height: auto;      /* mantiene proporción */
+  max-width: 30vh; /* la imagen nunca pasa de 120px */
+  height: auto; /* mantiene proporción */
 }
 
 .list-group-item:first-child {
   border-radius: 30px;
-  
 }
 .list-group-item:last-child {
   border-radius: 30px;
@@ -49,8 +50,6 @@ main .container {
 .list-group-item:hover {
   transform: translateY(-3px);
 }
-
-
 
 .textoacortado {
   white-space: normal;
@@ -68,7 +67,7 @@ nav a {
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -79,17 +78,16 @@ nav a {
   cursor: pointer;
 }
 
-
-.responsive{
- flex-wrap: wrap;
- gap: 10px;
- justify-content: center;
- display: flex;
+.responsive {
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  display: flex;
 }
 .responsive button {
-  flex: 1;           /* que se repartan el espacio */
-  min-width: 120px;  /* no se achican demasiado */
-  max-width: 200px;  /* no se agrandan infinito */
+  flex: 1; /* que se repartan el espacio */
+  min-width: 120px; /* no se achican demasiado */
+  max-width: 200px; /* no se agrandan infinito */
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -99,8 +97,8 @@ nav a {
 }
 @media (max-width: 576px) {
   .responsive {
-    flex: 100%;      
-    max-width: 50%;  
+    flex: 100%;
+    max-width: 50%;
   }
   .btn-group {
     display: inline-block;
@@ -113,12 +111,11 @@ nav a {
   }
   .list-group-item .col {
     position: relative;
-
-}
- .list-group-item .col > .d-flex small.text-muted {
+  }
+  .list-group-item .col > .d-flex small.text-muted {
     position: absolute;
     right: 0;
     bottom: 0;
-    font-size: 1.3em ;
+    font-size: 1.3em;
   }
 }
