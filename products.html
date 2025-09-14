@@ -15,44 +15,55 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/categories.css" rel="stylesheet" />
+    <link href="css/nav.css" rel="stylesheet">
   </head>
 
   <body>
 <body>
   <div id="nav"></div>
   <script src="js/nav.js"></script>
+  
   <main class="pb-5">
-    <div class="text-center">
-      <h2 id="c1" class="text-center">Productos</h2>
-    </div>
+    
     <div class="container">
-      <div class="row">
-        <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4 " data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-outline-light" for="sortAsc"><p class="bi bi-caret-down-fill"></p></label>
-            <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-outline-light" for="sortDesc"><p class="bi bi-caret-up-fill"></p></label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-outline-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
-          </div>
-        </div>
-      </div>
       <div class="row mb-1">
-        <div class="col-12 col-lg-6 ms-lg-auto">
-          <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
-            <span class="fw-bold text-white">Cant.</span>
-            <input type="number" id="rangeFilterCountMin" class="form-control form-control-sm w-auto" style="max-width:70px"
-        placeholder="min.">
-            <input type="number" id="rangeFilterCountMax" class="form-control form-control-sm w-auto" style="max-width:70px"
-        placeholder="máx.">
-            <div class="btn-group">
-              <button class="btn btn-outline-light btn-sm" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-outline-light btn-sm" id="clearRangeFilter">Limpiar</button>
-            </div>
+        <!-- FILTROS MAX - MIN -->
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle align-items-center gap-2 mb-3" data-bs-toggle="buttons">
+            <span class="fw-bold text-white">Precio </span>
+            <input type="radio" class="btn-check" name="options" id="sortAsc">
+            <label class="btn btn-outline-light" for="sortAsc">
+              <i class="bi bi-caret-down-fill"></i>
+            </label>
+            <input type="radio" class="btn-check" name="options" id="sortDesc">
+            <label class="btn btn-outline-light" for="sortDesc">
+              <i class="bi bi-caret-up-fill"></i>
+            </label>
+            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+            <label class="btn btn-outline-light" for="sortByCount">
+              <i class="fas fa-sort-amount-down mr-1"></i>
+            </label>
           </div>
         </div>
       </div>
+      <!-- FILTROS CANTIDAD -->
+      <div class="col-12 col-lg-6 ms-lg-auto">
+        <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
+          <span class="fw-bold text-white ">Cant.</span>
+          <input type="number" id="rangeFilterCountMin" class="form-control form-control-sm w-auto" style="max-width:70px"
+      placeholder="min.">
+          <input type="number" id="rangeFilterCountMax" class="form-control form-control-sm w-auto" style="max-width:70px"
+      placeholder="máx.">
+          <div class="btn-group">
+            <button class="btn btn-outline-light btn-sm" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-outline-light btn-sm" id="clearRangeFilter">Limpiar</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-1">
+      </div>
+      
     </div>
     <div class="row">
       <div  class="container" id="listado">
