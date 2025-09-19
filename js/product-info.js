@@ -76,9 +76,39 @@ document.addEventListener("DOMContentLoaded", () => {
           thumb.classList.add("border-primary");
         });
       });
+      cargarComentarios(infoProducto.id);
     })
     .catch((error) => {
       // si hay un error, se muestra en consola
       contenedorProducto.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
     });
-});
+function cargarComentarios(productoID) {
+    const urlComentarios = `https://japceibal.github.io/emercado-api/products_comments/${productoID}.json`;   
+    fetch(urlComentarios)
+        .then(response => {
+            if (!response.ok) {   
+                throw new Error('Hubo un error al cargar los comentarios');
+            }
+            return response.json();
+        })
+        .then((comentarios) => {
+        const lista = document.getElementById("ratings-list");
+        lista.innerHTML = "";
+        comentarios.forEach((comentario) => {
+            const item = document.createElement("div"); 
+                item.classList.add("list-group-item");   
+                item.innerHTML = `
+                <div class="d-flex w-100 justify-content-between">
+                <strong> ${comentario.user}</strong>
+                <span>${new Date(comentario.dateTime).toLocaleString()}</span>
+                </div>
+                <div>${"⭐".repeat(comentario.score)}${"☆".repeat(5 - comentario.score)}</div>
+            <p>${comentario.description}</p>
+          `;
+          lista.appendChild(item);
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+}})
