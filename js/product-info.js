@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contenedorProducto.innerHTML = `<div class="alert alert-warning">No se seleccionó ningún producto.</div>`;
     return;
   }
-
+  // MOSTRAR LOS DETALLES DEL PRODUCTO SELECCIONADO
   let url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
   fetch(url)
     .then((response) => {
@@ -76,39 +76,78 @@ document.addEventListener("DOMContentLoaded", () => {
           thumb.classList.add("border-primary");
         });
       });
+      productosRelacionados(infoProducto);
       cargarComentarios(infoProducto.id);
     })
     .catch((error) => {
       // si hay un error, se muestra en consola
       contenedorProducto.innerHTML = `<div class="alert alert-danger" role="alert">Error al cargar los productos: ${error.message}</div>`;
     });
-function cargarComentarios(productoID) {
-    const urlComentarios = `https://japceibal.github.io/emercado-api/products_comments/${productoID}.json`;   
+
+  // MOSTRAR PRODUCTOS RELACIONADOS
+  function productosRelacionados(producto) {
+    let listRelatedProduct = document.getElementById("relatedProducts-list");
+    listRelatedProduct.innerHTML = "";
+
+    producto.relatedProducts.forEach((relatedProduct) => {
+      const card = document.createElement("div");
+      card.classList.add("list-group-item");
+      card.innerHTML = `
+        <a href="#">
+          <div class="card" style="width: 18rem;">
+            <img src="${relatedProduct.image}" class="card-img-top" alt="${relatedProduct.name}">
+            <div class="card-body">
+              <h5 class="card-title">${relatedProduct.name}</h5>
+            </div>
+          </div>
+        </a>
+      `;
+
+      // Para redirigir a la pantalla del producto relacionado seleccionado
+      card.querySelector("a").addEventListener("click", (e) => {
+        e.preventDefault();
+        // guardo el ID del producto indicado en memoria local
+        localStorage.setItem("productoID", relatedProduct.id);
+        // redirijo la busqueda al product-info para mostrarlo
+        window.location.href = "product-info.html";
+      });
+
+      // creo la card y la agrego al dom
+      listRelatedProduct.appendChild(card);
+    });
+  }
+
+  // MOSTRAR LOS COMENTAROS DEL PRODUCTO
+  function cargarComentarios(productoID) {
+    const urlComentarios = `https://japceibal.github.io/emercado-api/products_comments/${productoID}.json`;
     fetch(urlComentarios)
-        .then(response => {
-            if (!response.ok) {   
-                throw new Error('Hubo un error al cargar los comentarios');
-            }
-            return response.json();
-        })
-        .then((comentarios) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Hubo un error al cargar los comentarios");
+        }
+        return response.json();
+      })
+      .then((comentarios) => {
         const lista = document.getElementById("ratings-list");
         lista.innerHTML = "";
         comentarios.forEach((comentario) => {
-            const item = document.createElement("div"); 
-                item.classList.add("list-group-item");   
-                item.innerHTML = `
-                <div class="d-flex w-100 justify-content-between">
-                <strong> ${comentario.user}</strong>
-                <span>${new Date(comentario.dateTime).toLocaleString()}</span>
-                </div>
-                <div>${"⭐".repeat(comentario.score)}${"☆".repeat(5 - comentario.score)}</div>
-            <p>${comentario.description}</p>
-          `;
+          const item = document.createElement("div");
+          item.classList.add("list-group-item");
+          item.innerHTML = `
+              <div class="d-flex w-100 justify-content-between">
+              <strong> ${comentario.user}</strong>
+              <span>${new Date(comentario.dateTime).toLocaleString()}</span>
+              </div>
+              <div>${"⭐".repeat(comentario.score)}${"☆".repeat(
+            5 - comentario.score
+          )}</div>
+          <p>${comentario.description}</p>
+        `;
           lista.appendChild(item);
         });
       })
       .catch((err) => {
         console.error(err);
       });
-}})
+  }
+});
