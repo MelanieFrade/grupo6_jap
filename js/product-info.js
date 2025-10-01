@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((infoProducto) => {
       // console.log(infoProducto);
       contenedorProducto.innerHTML = `
-        <div id="cardProducto" class="row g-3 flex-column flex-lg-row">
+        <div id="cardProducto" class="card-base row g-3 flex-column flex-lg-row">
           <div class="col">
             <div class="d-flex gap-2 justify-content-center">
               <div class="text-center"> 
@@ -91,16 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     producto.relatedProducts.forEach((relatedProduct) => {
       const card = document.createElement("div");
-      card.classList.add("list-group-item");
+      card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+
       card.innerHTML = `
-        <a href="#">
-          <div class="card" style="width: 18rem;">
+      <div id="card-related"  class="card-base card h-100">
+          <a href="#" class="text-decoration-none">
             <img src="${relatedProduct.image}" class="card-img-top" alt="${relatedProduct.name}">
             <div class="card-body">
-              <h5 class="card-title">${relatedProduct.name}</h5>
+              <h5 class="card-title mb-0 ">${relatedProduct.name}</h5>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       `;
 
       // Para redirigir a la pantalla del producto relacionado seleccionado
@@ -132,16 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.innerHTML = "";
         comentarios.forEach((comentario) => {
           const item = document.createElement("div");
-          item.classList.add("list-group-item");
+          //item.classList.add("list-group-item");
           item.innerHTML = `
-              <div class="d-flex w-100 justify-content-between">
-              <strong> ${comentario.user}</strong>
-              <span>${new Date(comentario.dateTime).toLocaleString()}</span>
-              </div>
-              <div>${"⭐".repeat(comentario.score)}${"☆".repeat(
+          <div id="card-comment" class="card-base"> 
+            <div class="d-flex w-100 justify-content-between">
+            <strong> ${comentario.user}</strong>
+            <span>${new Date(comentario.dateTime).toLocaleString()}</span>
+            </div>
+            <div>${"⭐".repeat(comentario.score)}${"☆".repeat(
             5 - comentario.score
           )}</div>
-          <p>${comentario.description}</p>
+            <p class="mb-0">${comentario.description}</p>
+          </div>
         `;
           lista.appendChild(item);
         });
