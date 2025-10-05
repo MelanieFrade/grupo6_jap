@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
           //item.classList.add("list-group-item");
           item.innerHTML = `
           <div class="card-base card-comment"> 
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex w-100 justify-content-between marging">
             <strong> ${comentario.user}</strong>
             <span>${new Date(comentario.dateTime).toLocaleString()}</span>
             </div>
