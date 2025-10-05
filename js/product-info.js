@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     producto.relatedProducts.forEach((relatedProduct) => {
       const card = document.createElement("div");
-      card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+      card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4";
 
       card.innerHTML = `
       <div id="card-related"  class="card-base card h-100">
@@ -118,55 +118,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
- 
- const stars = document.querySelectorAll("#ratingStars i");
-const commentInput = document.getElementById("comment");
-const submitButton = document.getElementById("submitReview");
-const ratingsList = document.getElementById("ratings-list");
+  // CARGAR COMENTARIO
+  const stars = document.querySelectorAll("#ratingStars i");
+  const commentInput = document.getElementById("comment");
+  const submitButton = document.getElementById("submitReview");
+  const ratingsList = document.getElementById("ratings-list");
 
-let selectedRating = 0;
+  let selectedRating = 0;
 
-// Cambiar estrellas al hacer clic
-stars.forEach((star) => {
-  star.addEventListener("click", () => {
-    selectedRating = parseInt(star.dataset.value);
-    stars.forEach((s) => {
-      if (parseInt(s.dataset.value) <= selectedRating) {
-        s.classList.remove("bi-star");
-        s.classList.add("bi-star-fill");
-      } else {
-        s.classList.remove("bi-star-fill");
-        s.classList.add("bi-star");
-      }
+  // Cambiar estrellas al hacer clic
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      selectedRating = parseInt(star.dataset.value);
+      stars.forEach((s) => {
+        if (parseInt(s.dataset.value) <= selectedRating) {
+          s.classList.remove("bi-star");
+          s.classList.add("bi-star-fill");
+        } else {
+          s.classList.remove("bi-star-fill");
+          s.classList.add("bi-star");
+        }
+      });
     });
   });
-});
 
-// Enviar reseña y agregarla al contenedor
-submitButton.addEventListener("click", () => {
-  const comment = commentInput.value.trim();
-  if (selectedRating === 0 || comment === "") return;
+  // Enviar reseña y agregarla al contenedor
+  submitButton.addEventListener("click", () => {
+    const comment = commentInput.value.trim();
+    if (selectedRating === 0 || comment === "") return;
 
-  const div = document.createElement("div");
-  div.classList.add("card", "p-2", "mb-2");
-  div.innerHTML = `
-    <strong>Tú</strong> - ${"⭐".repeat(selectedRating)}${"☆".repeat(5 - selectedRating)}
-    <p>${comment}</p>
-  `;
-  ratingsList.appendChild(div);
+    const div = document.createElement("div");
+    div.classList.add("card-base", "card-comment");
+    div.innerHTML = `
+      <strong>Tú</strong> 
+      <p class="mb-0">${"⭐".repeat(selectedRating)}${"☆".repeat(5 - selectedRating)}</p>
+      <p class="mb-0">${comment}</p>
+    `;
+    ratingsList.appendChild(div);
 
-  // Reiniciar formulario
-  selectedRating = 0;
-  commentInput.value = "";
-  stars.forEach((s) => {
-    s.classList.remove("bi-star-fill");
-    s.classList.add("bi-star");
+    // Reiniciar formulario
+    selectedRating = 0;
+    commentInput.value = "";
+    stars.forEach((s) => {
+      s.classList.remove("bi-star-fill");
+      s.classList.add("bi-star");
+    });
   });
-});
- 
- 
- 
- 
+
   // MOSTRAR LOS COMENTAROS DEL PRODUCTO
   function cargarComentarios(productoID) {
     const urlComentarios = `https://japceibal.github.io/emercado-api/products_comments/${productoID}.json`;
@@ -184,7 +182,7 @@ submitButton.addEventListener("click", () => {
           const item = document.createElement("div");
           //item.classList.add("list-group-item");
           item.innerHTML = `
-          <div id="card-comment" class="card-base"> 
+          <div class="card-base card-comment"> 
             <div class="d-flex w-100 justify-content-between">
             <strong> ${comentario.user}</strong>
             <span>${new Date(comentario.dateTime).toLocaleString()}</span>
