@@ -206,3 +206,7 @@ a.custom-card:hover {
 body {
   background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
 }
+.marging {
+ gap: 15px;
+
+}
