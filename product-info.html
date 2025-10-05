@@ -28,15 +28,43 @@
     <main>
       <div class="container" id="detalleProducto"></div>
 
+<!-- Productos Relacionados y Valoraciones -->
+
       <section class="relatedProducts">
         <h2>Productos Relacionados</h2>
         <div id="relatedProducts-list" class="row p-5"></div>
       </section>
-
-      <section class="seccionRating">
+ <section class="seccionRating">
         <h2>Valoraciones de usuarios que compraron estos productos</h2>
+        
+
+<!-- Crear una valoración-->
+<div class="card p-3 mb-3">
+  <h5 class="card-title">Deja tu reseña</h5>
+
+
+  <div id="ratingStars" class="fs-3 text-warning mb-3">
+    <i class="bi bi-star" data-value="1"></i>
+    <i class="bi bi-star" data-value="2"></i>
+    <i class="bi bi-star" data-value="3"></i>
+    <i class="bi bi-star" data-value="4"></i>
+    <i class="bi bi-star" data-value="5"></i>
+  </div>
+
+  <textarea id="comment" class="form-control mb-3" rows="3" placeholder="Escribe tu comentario..."></textarea>
+
+
+  <button id="submitReview" class="btn btn-primary">Enviar</button>
+</div>
+
+<div id="ratings-list"></div>
+
         <div id="ratings-list" class="p-5"></div>
       </section>
+
+
+
+
       
     </main>
     <footer class="text-muted">
