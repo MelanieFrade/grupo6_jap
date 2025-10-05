@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     producto.relatedProducts.forEach((relatedProduct) => {
       const card = document.createElement("div");
-      card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+      card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4";
 
       card.innerHTML = `
       <div id="card-related"  class="card-base card h-100">
