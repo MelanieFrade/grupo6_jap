@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
+  background: linear-gradient(90deg, var(--color-bg-secondary), var(--color-accent));
 }
 main .container {
   padding-top: 30px; /* deja espacio arriba */
@@ -32,7 +32,7 @@ main .container {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
-  border: 2px solid #1b6d7f;
+  border: 2px solid var(--color-accent);
   border-radius: 30px;
 }
 .list-group-item img {
@@ -57,7 +57,7 @@ main .container {
 }
 
 #c1 {
-  color: black;
+  color: var(--color-text);
   font-size: 280%;
   font-weight: bolder;
 }
@@ -66,12 +66,12 @@ nav a {
 }
 
 .site-header a {
-  color: white;
+  color: var(--color-bg);
   transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
-  color: black;
+  color: var(--color-text);
 }
 
 .cursor-active {
@@ -91,8 +91,8 @@ nav a {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: #1b6d7f;
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-bg);
   font-size: 16px;
 }
 @media (max-width: 576px) {
@@ -119,3 +119,4 @@ nav a {
     font-size: 1.3em;
   }
 }
+
