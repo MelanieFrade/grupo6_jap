@@ -1,11 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-light fw-bold text-dark">
   <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav w-100 justify-content-between">
+        <li class="nav-item">
+          <button onclick="changeMode()" class="btn rounded-fill">
+            <i id="dl-icon" class="bi bi-moon-fill"></i>
+          </button>
+        </li>
         <li class="nav-item">
           <a class="nav-link active fs-3" href="index.html">Inicio</a>
         </li>
@@ -26,12 +38,10 @@
 
         </li>
       <div class="buscador-container">
-        <input type="search" id="buscador" placeholder="Buscar productos...">
+        <input type="search" id="buscador" placeholder="Buscar productos..." />
         <i class="bi bi-search"></i>
         <li class="nav-item">
       </div>
         </li>
       </li>
     </div> 
-  </div>
-</nav>
