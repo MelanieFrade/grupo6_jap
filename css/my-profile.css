@@ -67,6 +67,15 @@ body, main {
   width: 100%;
   z-index: 10; /* mayor que las columnas */
 }
+.profile-photo img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid whitesmoke;
+}
+
+
 
 @media screen and (max-width: 768px) {
   .left, .right {
@@ -76,6 +85,10 @@ body, main {
   }
   .right {
     padding-left: 0.5rem;
+  }
+  .profile-photo img {
+    width: 120px;
+    height: 120px;
   }
 
 }

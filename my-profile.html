@@ -37,22 +37,67 @@
         <br><br><br><br>
         <ul class="list-group">
           <li class="list-group-item fs-4 fw-bold">¡Bienvenido a interfaz del usuario!</li>
-        <li class="list-group-item list-group-item-light fs-5"> <button id="botonInfo" class="btn btn-light w-100 w-md-auto">Información de la cuenta</button></li>
-        
-        <li class="list-group-item list-group-item-light fs-5"><button id="botonDevoluciones" class="btn btn-light w-100 w-md-auto">Devoluciones</button></li>
-        <li class="list-group-item list-group-item-light fs-5"><button id="botonMiBilletera" class="btn btn-light w-100 w-md-auto">Mi Billetera</button></li>
-        <li class="list-group-item list-group-item-light fs-5"><button id="botonFavoritos" class="btn btn-light w-100 w-md-auto">Favoritos</button></li>
+        <li class="list-group-item list-group-item-light fs-5"> 
+          <button id="botonInfo" class="btn btn-light w-100 w-md-auto">Información de la cuenta</button>
+        </li>
+        <li class="list-group-item list-group-item-light fs-5">
+          <button id="botonDevoluciones" class="btn btn-light w-100 w-md-auto">Devoluciones</button>
+        </li>
+        <li class="list-group-item list-group-item-light fs-5">
+          <button id="botonMiBilletera" class="btn btn-light w-100 w-md-auto">Mi Billetera</button>
+        </li>
+        <li class="list-group-item list-group-item-light fs-5">
+          <button id="botonFavoritos" class="btn btn-light w-100 w-md-auto">Favoritos</button>
+        </li>
         </ul>
+      </div>
+<div class="split right ">
+    <div class="centered fs-3 ">
+      <div class="card-base card mb-4 p-4"  style="max-width: 600px; background-color: white;">
 
-<div class="split right">
-  <div class="centered fs-3">
-    <br>
-    <h2 id="head">Mi cuenta</h2>
-    <p>Titular de la cuenta</p>
-    <div id ="user-info"></div>
-  </div>
-</div>
-    </main>
+      <h2 id="head">Mi cuenta</h2>
+      <p>Titular de la cuenta</p>
+      <span id ="nombre-perfil"></span>
+      <hr>
+
+  <div class="profile-photo text-center my-3">
+        <img src="/imagenes/default-user.png" alt="Foto de perfil" id="profile-img">
+        <label for="profile-upload" class="btn btn-primary btn-sm mt-2">Actualizar Foto</label>
+        <input type="file" id="profile-upload" accept="image/*" style="display:none;">
+      </div>
+<!-- Campos -->
+ <form id="profile-form">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+    </div>
+    <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label> 
+    <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido">
+    </div>
+    <div class="mb-3">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">  
+    </div>
+    <div class="mb-3">
+    <label for="telefono" class="form-label">Teléfono</label>
+    <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu número de teléfono">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+       </form>
+      </div>
+     </div>
+    </div>
+
+
+
+
+
+
+
+
     <footer class="text-muted">
       <div class="container">
         <p class="float-end">
