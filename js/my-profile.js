@@ -6,4 +6,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-document.i
+document.getElementById("container").innerHTML= nombreUsuario;
