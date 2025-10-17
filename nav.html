@@ -11,37 +11,49 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav w-100 justify-content-between">
+
+        <!-- Modo oscuro-->
         <li class="nav-item">
           <button onclick="changeMode()" class="btn rounded-fill">
             <i id="dl-icon" class="bi bi-moon-fill"></i>
           </button>
         </li>
+
         <li class="nav-item">
           <a class="nav-link active fs-3" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active fs-3" href="categories.html">Categorías</a>
         </li>
+  
         <li class="nav-item">
           <a class="nav-link active fs-3" href="sell.html">Vender</a>
         </li>
-        <li class="nav-item">
-          <p id="user-info" class="nav-link fs-3"></p>
-        </li>
-        <a class="nav-link fs-3 bi bi-box-arrow-right" href="login.html"></a>
-        </li>
-        <a href="my-profile.html" class="nav-link fs-3">
-  <i class="fa-sharp fa-solid fa-circle-user fa-2x"></i>
-</a>
 
-        </li>
-      <div class="buscador-container">
+       <!-- Redireccion login-->
+        <li class="nav-item"> 
+        <a class="nav-link fs-3 bi bi-box-arrow-right" href="login.html"></a>
+      </li>
+      <!-- Searchbar-->
+      <li class="buscador-container">
         <input type="search" id="buscador" placeholder="Buscar productos..." />
         <i class="bi bi-search"></i>
         <li class="nav-item">
-      </div>
+        </li>
+        </li>
+        <!-- Icono + nombre de perfil con redireccion pagina de perfil-->
+        <li class="nav-item d-flex align-items-center">
+          <a  href="my-profile.html" class="nav-link fs-4 d-flex align-items-center gap-2">
+            <i class="fa-sharp fa-solid fa-circle-user fa-2x"></i>
+            <span id="user-info"></span>
+    </a>
         </li>
       </li>
-    </div> 
+       </ul>
+      </div> 
+    </div>
+</nav>
+   

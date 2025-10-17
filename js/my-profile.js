@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (nombreUsuario) {
         document.getElementById("user-info").textContent = nombreUsuario;
       }
+
     });
 
 
-document.getElementById("container").innerHTML= nombreUsuario;
+

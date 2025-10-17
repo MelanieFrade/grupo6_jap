@@ -1,5 +1,20 @@
+header nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1; /* detrás del contenido del navbar */
+  background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
+}
+
+
+
+body, main {
+  padding-top: 70px; /* igual a la altura de la navbar */
+}
+
 .split {
-  height: 100%;
+  height: 100vh;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -7,39 +22,60 @@
   padding-top: 80px;
 }
 
-/* Control the left side */
+
 .left {
   left: 0;
-  width: 18%;
-  background-color: #181717;
+  width: 30%;
+  background-color: white;
   color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
-/* Control the right side */
+
 .right {
   right: 0;
-  width: 82%;
+  width: 70%;
   background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
-  color: white;
+  color: black;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto ;
 }
 
-/* If you want the content centered horizontally and vertically */
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.right .centered {
+  position: relative;
+  text-align: left;
+}
+.left.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
-/* Style the image inside the centered container, if needed */
 .centered img {
   width: 150px;
   border-radius: 50%;
 }
 #nav {
-  position: fixed;;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 10; /* mayor que las columnas */
+}
+
+@media screen and (max-width: 768px) {
+  .left, .right {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .right {
+    padding-left: 0.5rem;
+  }
+
 }
