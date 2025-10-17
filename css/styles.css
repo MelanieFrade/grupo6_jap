@@ -1,3 +1,25 @@
+/* VARIABLES DE COLOR SEGÚN EL TEMA */
+
+/* Tema claro */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #e2e2e2;
+  --color-text: #000000;
+  --color-accent: #1b6d7f;
+  --color-card: rgba(255, 255, 255, 0.8);
+  --color-border: #1b6d7f;
+}
+
+/* Tema oscuro */
+[data-bs-theme="dark"] {
+  --color-bg: #121212;
+  --color-bg-secondary: #1e1e1e;
+  --color-text: #f8f9fa;
+  --color-accent: #53c0fb;
+  --color-card: rgba(40, 40, 40, 0.9);
+  --color-border: #53c0fb;
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -37,7 +59,7 @@ nav a {
   background: url(../img/cover_back1.png) left center no-repeat,
     url(../img/cover_back2.png) right center no-repeat;
   background-size: 50% 100%, 50% 100%;
-  color: black;
+  color: var(--color-text);
   font-weight: bold;
 }
 
@@ -72,7 +94,7 @@ nav a {
 
 .jumbotron .container {
   max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--color-card);
   border-radius: 10px;
   text-shadow: 1px 1px 2px grey;
 }
@@ -91,18 +113,18 @@ footer p {
 }
 
 .site-header a {
-  color: white;
+  color: var(--color-bg);
   transition: ease-in-out color .15s;
 }
 
 .site-header .dropdown-menu a {
-  color: black;
+  color: var(--color-text);
 }
 
 .dropzone {
   border: 2px dashed #0087F7;
   border-radius: 5px;
-  background: white;
+  background: var(--color-bg);
 }
 
 .img-fit {
@@ -133,7 +155,7 @@ footer p {
 .left {
   float: left;
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--color-card);
 }
 
 .lds-ring div {
@@ -143,10 +165,10 @@ footer p {
   width: 51px;
   height: 51px;
   margin: 6px;
-  border: 6px solid #fff;
+  border: 6px solid var(--color-bg);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--color-bg) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -180,7 +202,7 @@ footer p {
 
 #spinner-wrapper {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-text);
   width: 100%;
   height: 100%;
   top: 0;
@@ -204,8 +226,9 @@ a.custom-card:hover {
 }
 
 body {
-  background: linear-gradient(90deg, #e2e2e2, #1b6d7f);
+  background: linear-gradient(90deg, var(--color-bg-secondary), var(--color-accent));
 }
+
 .marging {
  gap: 15px;
 
