@@ -6,8 +6,9 @@
   padding: 15px;
 }
 .card-base {
-  background: var(--color-bg);
+  background: var(--color-card);
   border: 2px solid var(--color-border);
+  color: var(--color-text);
   /*width: 100%;*/
 }
 /* CARD PRODUCTO */
@@ -35,7 +36,7 @@
 
 #carrusel img:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 section{
   padding: 20px;
@@ -48,18 +49,19 @@ section{
 }
 #card-related:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 /* CARD COMENTARIO */
 .card-comment {
   border-radius: 10px;
   padding: 30px;
   margin-bottom: 10px;
+
 }
 
 /*CARD COMENTARIOCREADO*/
 .card.p-3.mb-3 {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-card);
   border-radius: 10px;
   padding: 30px;
   margin-bottom: 10px;
