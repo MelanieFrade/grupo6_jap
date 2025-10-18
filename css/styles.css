@@ -2,22 +2,41 @@
 
 /* Tema claro */
 :root {
-  --color-bg: #ffffff;
-  --color-bg-secondary: #e2e2e2;
+  --color-background: #1B6D7F;
+  --color-background-secondary: #999999;
   --color-text: #000000;
-  --color-accent: #1b6d7f;
-  --color-card: rgba(255, 255, 255, 0.8);
-  --color-border: #1b6d7f;
+  --color-text-secondary: #ffffff;
+  --color-text-input: #333;
+  --color-bg-input: #EEEEEE;
+  --color-button: #1b6d7f;
+  --color-card: #ffffff;
+  --color-border: #1B6D7F;
+  --color-border-secondary: #ccc;
+  --color-shadow: #6c757d;
 }
 
 /* Tema oscuro */
 [data-bs-theme="dark"] {
+  --color-background: #153c44;
+  --color-background-secondary: #333736;
+  --color-text: #ffffff;
+  --color-text-secondary: #000000;
+  --color-text-input: #333;
+  --color-bg-input: #EEEEEE;
+  --color-button: #1b6d7f;
+  --color-card: #101117;
+  --color-border: #1B6D7F;
+  --color-border-secondary: #ccc;
+  --color-shadow: #6c757d;
+
+
+/*
   --color-bg: #121212;
   --color-bg-secondary: #1e1e1e;
   --color-text: #f8f9fa;
   --color-accent: #53c0fb;
   --color-card: rgba(40, 40, 40, 0.9);
-  --color-border: #53c0fb;
+  --color-border: #53c0fb;*/
 }
 
 .jumbotron,
@@ -96,7 +115,7 @@ nav a {
   max-width: 40rem;
   background-color: var(--color-card);
   border-radius: 10px;
-  text-shadow: 1px 1px 2px grey;
+  text-shadow: 1px 1px 2px var(--color-shadow);
 }
 
 .jumbotron .lead {
@@ -113,7 +132,7 @@ footer p {
 }
 
 .site-header a {
-  color: var(--color-bg);
+  color: var(--color-background);
   transition: ease-in-out color .15s;
 }
 
@@ -124,7 +143,7 @@ footer p {
 .dropzone {
   border: 2px dashed #0087F7;
   border-radius: 5px;
-  background: var(--color-bg);
+  background: var(--color-background);
 }
 
 .img-fit {
@@ -165,10 +184,10 @@ footer p {
   width: 51px;
   height: 51px;
   margin: 6px;
-  border: 6px solid var(--color-bg);
+  border: 6px solid var(--color-border);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: var(--color-bg) transparent transparent transparent;
+  border-color: var(--color-border) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -226,7 +245,7 @@ a.custom-card:hover {
 }
 
 body {
-  background: linear-gradient(90deg, var(--color-bg-secondary), var(--color-accent));
+  background: linear-gradient(90deg, var(--color-background-secondary), var(--color-background));
 }
 
 .marging {
