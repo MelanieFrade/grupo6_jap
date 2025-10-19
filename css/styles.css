@@ -38,7 +38,9 @@
 [data-bs-theme="light"] #dl-icon {
   color: yellow !important;
 }
-
+[data-bs-theme="dark"] #dl-icon {
+  color: white !important;
+}
 .jumbotron,
 .card-body,
 .container,
