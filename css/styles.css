@@ -15,6 +15,7 @@
   --color-shadow: #6c757d;
 }
 
+
 /* Tema oscuro */
 [data-bs-theme="dark"] {
   --color-background: #222446;
@@ -28,6 +29,14 @@
   --color-border: #00001A;
   --color-border-secondary: #ccc;
   --color-shadow: #6c757d;
+}
+
+[data-bs-theme="dark"] .nav-link.active{
+  color: #1B6D7F !important;
+}
+
+[data-bs-theme="light"] #dl-icon {
+  color: yellow !important;
 }
 
 .jumbotron,
