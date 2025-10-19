@@ -1,94 +1,32 @@
-header nav::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1; /* detrás del contenido del navbar */
-  background: linear-gradient(90deg, var(--color-background-secondary), var(--color-background));
-}
-
-
-
-body, main {
-  padding-top: 70px; /* igual a la altura de la navbar */
-}
-
-.split {
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 80px;
-}
-
-
-.left {
-  left: 0;
-  width: 30%;
+/* Fondo y espaciado */
+body {
   background-color: var(--color-card);
-  color: var(--color-text-secondary);
-  padding: 1rem;
-  box-sizing: border-box;
-  overflow-y: auto;
 }
 
-
-.right {
-  right: 0;
-  width: 70%;
-  /*background: linear-gradient(90deg, var(--color-background-secondary), var(--color-background));*/
-  color: var(--color-text);
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 1rem;
-  box-sizing: border-box;
-  overflow-y: auto ;
+/* Menú lateral */
+aside {
+  min-height: 100vh;
 }
 
-.right .centered {
-  position: relative;
-  text-align: left;
-}
-.left.centered {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+.list-group-item {
+  border: solid;
+  color: var(--color-border);
 }
 
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-}
-#nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10; /* mayor que las columnas */
-}
-.profile-photo img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--color-bg-input);
+.list-group-item button:hover {
+  background-color: var(--color-button);
+  color: var(--color-bg-input);
+  transition: 0.3s;
 }
 
+/* Perfil */
+.card {
+  background-color: var(--color-card);
+  border-radius: 30px;
+}
 
-
-@media screen and (max-width: 768px) {
-  .left, .right {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .right {
-    padding-left: 0.5rem;
-  }
-  .profile-photo img {
-    width: 120px;
-    height: 120px;
-  }
-
+/* Imagen de perfil */
+#profile-img {
+  border: 3px solid var(--color-border);
+  padding: 3px;
 }

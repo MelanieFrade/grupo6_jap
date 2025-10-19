@@ -17,26 +17,17 @@
 
 /* Tema oscuro */
 [data-bs-theme="dark"] {
-  --color-background: #153c44;
-  --color-background-secondary: #333736;
-  --color-text: #ffffff;
-  --color-text-secondary: #000000;
-  --color-text-input: #333;
-  --color-bg-input: #EEEEEE;
-  --color-button: #1b6d7f;
-  --color-card: #101117;
-  --color-border: #1B6D7F;
+  --color-background: #222446;
+  --color-background-secondary: #00001A;
+  --color-text: #D9D9D9;
+  --color-text-secondary: #D9D9D9;
+  --color-text-input: #8E8E8E;
+  --color-bg-input: #D9D9D9;
+  --color-button: #00001A;
+  --color-card: #272735;
+  --color-border: #00001A;
   --color-border-secondary: #ccc;
   --color-shadow: #6c757d;
-
-
-/*
-  --color-bg: #121212;
-  --color-bg-secondary: #1e1e1e;
-  --color-text: #f8f9fa;
-  --color-accent: #53c0fb;
-  --color-card: rgba(40, 40, 40, 0.9);
-  --color-border: #53c0fb;*/
 }
 
 .jumbotron,
