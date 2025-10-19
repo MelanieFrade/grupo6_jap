@@ -6,11 +6,13 @@ body {
 /* Menú lateral */
 aside {
   min-height: 100vh;
+  background-color: var(--color-card);
 }
 
 .list-group-item {
   border: solid;
   color: var(--color-border);
+  background-color: var(--color-card);
 }
 
 .list-group-item button:hover {
@@ -30,6 +32,16 @@ aside {
   border: 3px solid var(--color-border);
   padding: 3px;
 }
+.btn-list{
+  height: 48px;
+  background: var(--color-card);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
 .btn-action{
   height: 48px;
   background: var(--color-button);
@@ -44,10 +56,10 @@ aside {
 h2{
   color: var(--color-text);
 }
+h5{
+  color: var(--color-text);
+}
 
 .form-label{
 color: var(--color-text);
-}
-.form-control{
-  background: var(--color-bg-input);
 }
