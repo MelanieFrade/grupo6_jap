@@ -15,28 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-/*
-// Si hay un modo guardado, aplicarlo
-if (savedMode) {
-  document.body.setAttribute("data-bs-theme", savedMode);
-  document
-    .querySelector("#dl-icon")
-    .setAttribute(
-      "class",
-      savedMode === "dark" ? "bi bi-sun-fill" : "bi bi-moon-fill"
-    );
-}*/
 
 // Funciones de cambio
 function darkMode() {
   document.body.setAttribute("data-bs-theme", "dark");
-  document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
+  document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
   localStorage.setItem("theme", "dark");
 };
 
 function lightMode() {
   document.body.setAttribute("data-bs-theme", "light");
-  document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+  document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
   localStorage.setItem("theme", "light");
 };
 
@@ -45,28 +34,3 @@ function changeMode() {
   current === "light" ? darkMode() : lightMode();
 };
 
-/*
-const darkMode = () => {
-  document.querySelector("body").setAttribute("data-bs-theme", "dark");
-  document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
-  localStorage.setItem("theme", "dark");
-};
-
-const lightMode = () => {
-  document.querySelector("body").setAttribute("data-bs-theme", "light");
-  document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
-  localStorage.setItem("theme", "light");
-};
-
-const changeMode = () => {
-  document.querySelector("body").getAttribute("data-bs-theme") === "light"
-    ? darkMode()
-    : lightMode();
-};
-
-// Al cargar la página, aplicar el último modo
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  savedTheme === "dark" ? darkMode() : lightMode();
-  console.log(savedTheme);
-});*/

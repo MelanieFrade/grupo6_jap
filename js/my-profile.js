@@ -1,9 +1,9 @@
-// my-profile.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "datosPerfil";
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // límite efectivo en bytes (2MB)
-  const MAX_DIMENSION = 1024; // px máximo para width/height al comprimir
-  const QUALITY_STEP = 0.85; // calidad inicial para toDataURL
+  const MAX_DIMENSION = 1024; 
+  const QUALITY_STEP = 0.85; 
 
   // DOM
   const profileUpload = document.getElementById("profile-upload");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Guardar en localStorage ---
+  
   function guardarPerfilLocalStorage({ nombre, apellido, email, telefono, imageDataUrl }) {
     try {
       const payload = {

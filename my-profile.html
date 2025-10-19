@@ -23,33 +23,52 @@
       <script src="js/nav.js"></script>
      
       <script src="js/change-mode.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </header>
     </header>
 
     <main class="container-fluid mt-5">
       <div class="row">
         <!-- Columna izquierda: menú -->
-        <aside class="col-12 col-md-3 col-lg-2 bg-light p-3 border-end">
+        <aside class="col-12 col-md-3 col-lg-2 p-3 border-end">
           <ul class="list-group">
             <li class="list-group-item fs-5 fw-bold text-center">
-              ¡Bienvenido!
+              <h5 >
+                ¡Bienvenido!
+              </h5>
             </li>
             <li class="list-group-item">
-              <button id="botonInfo" class="btn btn-light w-100">
+              <button id="botonInfo" class="btn-list w-100" style=" color: var(--color-text-input)">
                 Información de la cuenta
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonDevoluciones" class="btn btn-light w-100">
+                <button id="botonInfo" class="btn-list w-100" style=" color: var(--color-text-input)">
                 Devoluciones
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonMiBilletera" class="btn btn-light w-100">
+              <button id="botonMiBilletera" class="btn-list w-100" style=" color: var(--color-text-input)">
                 Mi Billetera
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonFavoritos" class="btn btn-light w-100">
+              <button id="botonFavoritos" class="btn-list w-100" style=" color: var(--color-text-input)">
                 Favoritos
               </button>
             </li>
@@ -60,20 +79,20 @@
         <section class="col-12 col-md-9 col-lg-10 p-4">
           <div class="card shadow-sm p-4">
             <h2 class="mb-3">Mi cuenta</h2>
-            
             <hr />
 
             <div class="row g-4 align-items-start">
-              <!-- Columna foto -->
+               <!-- Columna foto -->
               <div class="col-12 col-md-4 text-center">
                 <img
                   src="./img/default-user.png"
                   alt="Foto de perfil"
                   id="profile-img"
                   class="img-fluid rounded-circle mb-2"
-                  style="max-width: 180px"
+                  style="max-width: 150px"
                 />
-                <label for="profile-upload" class="btn btn-success btn-sm">
+                <br>
+                <label for="profile-upload" class="btn-action btn-sm ">
                   <i class="fa-solid fa-pen"></i> Actualizar Foto
                 </label>
                 <input
@@ -129,7 +148,7 @@
                     />
                   </div>
 
-                  <button type="submit" class="btn btn-success w-100 w-md-auto">
+                  <button type="submit" class="btn-action w-100 w-md-auto">
                     Guardar Cambios
                   </button>
                 </form>
@@ -139,121 +158,6 @@
         </section>
       </div>
     </main>
-
-    <!--  
-    <main>
-      <div>
-        <div class="split left">
-          <br /><br /><br /><br />
-          <ul class="list-group">
-            <li class="list-group-item fs-4 fw-bold">
-              ¡Bienvenido a interfaz del usuario!
-            </li>
-            <li class="list-group-item list-group-item-light fs-5">
-              <button id="botonInfo" class="btn btn-light w-100 w-md-auto">
-                Información de la cuenta
-              </button>
-            </li>
-            <li class="list-group-item list-group-item-light fs-5">
-              <button
-                id="botonDevoluciones"
-                class="btn btn-light w-100 w-md-auto"
-              >
-                Devoluciones
-              </button>
-            </li>
-            <li class="list-group-item list-group-item-light fs-5">
-              <button
-                id="botonMiBilletera"
-                class="btn btn-light w-100 w-md-auto"
-              >
-                Mi Billetera
-              </button>
-            </li>
-            <li class="list-group-item list-group-item-light fs-5">
-              <button id="botonFavoritos" class="btn btn-light w-100 w-md-auto">
-                Favoritos
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        <div class="split right">
-          <div class="centered fs-3">
-            <div
-              class="card-base card mb-4 p-4"
-              style="max-width: 600px; background-color: white"
-            >
-              <h2 id="head">Mi cuenta</h2>
-              <p>Titular de la cuenta</p>
-              <span id="nombre-perfil"></span>
-              <hr />
-              <div>
-                <div class="profile-photo text-center my-3">
-                  <img
-                    src="/imagenes/default-user.png"
-                    alt="Foto de perfil"
-                    id="profile-img"
-                  />
-                  <label
-                    for="profile-upload"
-                    class="btn btn-success btn-sm mt-2"
-                    >Actualizar Foto</label
-                  >
-                  <input
-                    type="file"
-                    id="profile-upload"
-                    accept="image/*"
-                    style="display: none"
-                  />
-                </div>
-                -->
-    <!-- Campos -->
-    <!--
-                <div>
-                  <form id="profile-form">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="nombre"
-                      placeholder="Ingresa tu nombre"
-                    />
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="apellido"
-                      placeholder="Ingresa tu apellido"
-                    />
-                    <label for="email" class="form-label"
-                      >Correo Electrónico</label
-                    >
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="Ingresa tu correo electrónico"
-                    />
-                    <label for="telefono" class="form-label">Teléfono</label>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      id="telefono"
-                      placeholder="Ingresa tu número de teléfono"
-                    />
-                    <button type="submit" class="btn btn-success">
-                      Guardar Cambios
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  -->
 
     <footer class="text-muted">
       <div class="container">
