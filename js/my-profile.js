@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Cargar datos desde localStorage ---
   function cargarDatosPerfil() {
-    try {
+    try { // Se rodea en try/catch por si el JSON.parse falla pq este frena todo el script
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const data = JSON.parse(raw);
-
+//Si ambas variaables existen asigna los valores corresp.
       if (inputNombre && data.nombre) inputNombre.value = data.nombre;
       if (inputApellido && data.apellido) inputApellido.value = data.apellido;
       if (inputEmail && data.email) inputEmail.value = data.email;
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
         telefono: telefono || "",
         imageDataUrl: imageDataUrl || ""
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); // guarda como json payload
 
       if (nombrePerfilSpan) nombrePerfilSpan.textContent = payload.nombre;
       if (navUserSpan && payload.nombre) navUserSpan.textContent = payload.nombre;
-      if (payload.nombre) sessionStorage.setItem("username", payload.nombre);
+      if (payload.nombre) sessionStorage.setItem("username", payload.nombre); 
     } catch (err) {
       console.error("Error guardando datosPerfil:", err);
     }
@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Compresión de imagen usando canvas ---
   // devuelve Promise<string|null> con dataURL o null en error
   function compressImageFile(file) {
-    return new Promise((resolve) => {
-      if (!file) return resolve(null);
+    return new Promise((resolve) => { // devuelve una promesa pq no devuelve valor directo
+      if (!file) return resolve(null);// resolve devuelve null si no hay archivo
 
       const reader = new FileReader();
       reader.onload = function (e) {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
           canvas.width = targetWidth;
           canvas.height = targetHeight;
           const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+          ctx.drawImage(img, 0, 0, targetWidth, targetHeight);  // drawImage(imagen, x, y, ancho, alto)
 
           // intentar con calidad inicial y reducir si supera el límite
           let quality = QUALITY_STEP;
@@ -94,13 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const approxSize = Math.round((dataUrl.length - "data:image/jpeg;base64,".length) * 3 / 4);
             if (approxSize > MAX_FILE_SIZE && quality > 0.4) {
               quality -= 0.15;
-              dataUrl = canvas.toDataURL("image/jpeg", Math.max(0.1, quality));
+              dataUrl = canvas.toDataURL("image/jpeg", Math.max(0.1, quality)); // to dataURL(Primer arg: tipo, Segundo arg: calidad)
               tryReduce();
             } else {
               resolve(dataUrl);
             }
           }
-          tryReduce();
+          tryReduce(); //bucle inicial para reducción si es necesario,
+          //  no tiene limite de iteraciones mas q la condicion quality > 0.4
+
         };
         img.onerror = function () {
           console.error("Error cargando imagen para compresión.");
@@ -116,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Manejar subida de archivo ---
+  //  Manejar subida de archivo
   async function handleImageFile(file) {
     if (!file) return null;
 
@@ -134,7 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // comprobar tamaño final aproximado
-    const approxSize = Math.round((compressedDataUrl.length - compressedDataUrl.indexOf(",") - 1) * 3 / 4);
+    const approxSize = Math.round((compressedDataUrl.length - compressedDataUrl.indexOf(",") - 1) * 3 / 4); // busca la coma q separa el prefijo data:...,base64,) de la parte base64. 
+    // restando +1 y usa la misma formula (len_base64 * 3) /4  y calcula tamaño
     if (approxSize > MAX_FILE_SIZE) {
       const accept = confirm("La imagen comprimida sigue siendo >2MB. Queres guardarla igual? (puede llenar localStorage)");
       if (!accept) return null;
@@ -147,9 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // listener input file
   if (profileUpload) {
-    profileUpload.addEventListener("change", async (ev) => {
+    profileUpload.addEventListener("change", async (ev) => { // Convierte la funcion en asincrona, ev es el parametro del evento que recibe el listener
       const file = ev.target.files && ev.target.files[0];
-      const dataUrl = await handleImageFile(file);
+      const dataUrl = await handleImageFile(file); // sin async/await no se puede esperar el resultado de handleImageFile
       if (!dataUrl) return;
       // guardar perfil con la img nueva, manteniendo otros campos actuales
       guardarPerfilLocalStorage({
@@ -165,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // listener submit del form
   if (profileForm) {
     profileForm.addEventListener("submit", (ev) => {
-      ev.preventDefault();
+      ev.preventDefault(); //Evita el submit normal del form
       const currentImg = profileImg ? profileImg.src : "";
       guardarPerfilLocalStorage({
         nombre: inputNombre ? inputNombre.value.trim() : "",
@@ -201,7 +204,3 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload();
   };
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("email").value = sessionStorage.getItem("username");
-})
