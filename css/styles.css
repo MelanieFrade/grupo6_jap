@@ -15,6 +15,7 @@
   --color-shadow: #6c757d;
 }
 
+
 /* Tema oscuro */
 [data-bs-theme="dark"] {
   --color-background: #222446;
@@ -30,6 +31,16 @@
   --color-shadow: #6c757d;
 }
 
+[data-bs-theme="dark"] .nav-link.active{
+  color: #1B6D7F !important;
+}
+
+[data-bs-theme="light"] #dl-icon {
+  color: yellow !important;
+}
+[data-bs-theme="dark"] #dl-icon {
+  color: white !important;
+}
 .jumbotron,
 .card-body,
 .container,
