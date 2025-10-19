@@ -25,35 +25,50 @@
     <header>
       <div id="nav"></div>
       <script src="js/nav.js"></script>
-      <!-- 
       <script src="js/change-mode.js"></script>
-    --></header>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </header>
 
     <main class="container-fluid mt-5">
       <div class="row">
         <!-- Columna izquierda: menú -->
-        <aside class="col-12 col-md-3 col-lg-2 bg-light p-3 border-end">
+        <aside class="col-12 col-md-3 col-lg-2 p-3 border-end">
           <ul class="list-group">
             <li class="list-group-item fs-5 fw-bold text-center">
               ¡Bienvenido!
             </li>
             <li class="list-group-item">
-              <button id="botonInfo" class="btn btn-light w-100">
+              <button id="botonInfo" class="btn w-100">
                 Información de la cuenta
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonDevoluciones" class="btn btn-light w-100">
+              <button id="botonDevoluciones" class="btn w-100">
                 Devoluciones
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonMiBilletera" class="btn btn-light w-100">
+              <button id="botonMiBilletera" class="btn w-100">
                 Mi Billetera
               </button>
             </li>
             <li class="list-group-item">
-              <button id="botonFavoritos" class="btn btn-light w-100">
+              <button id="botonFavoritos" class="btn w-100">
                 Favoritos
               </button>
             </li>
@@ -64,7 +79,6 @@
         <section class="col-12 col-md-9 col-lg-10 p-4">
           <div class="card shadow-sm p-4">
             <h2 class="mb-3">Mi cuenta</h2>
-            
             <hr />
 
             <div class="row g-4 align-items-start">
@@ -75,9 +89,9 @@
                   alt="Foto de perfil"
                   id="profile-img"
                   class="img-fluid rounded-circle mb-2"
-                  style="max-width: 180px"
+                  style="max-width: 150px"
                 />
-                <label for="profile-upload" class="btn btn-success btn-sm">
+                <label for="profile-upload" class="btn-action btn-sm ">
                   <i class="fa-solid fa-pen"></i> Actualizar Foto
                 </label>
                 <input
@@ -133,7 +147,7 @@
                     />
                   </div>
 
-                  <button type="submit" class="btn btn-success w-100 w-md-auto">
+                  <button type="submit" class="btn-action w-100 w-md-auto">
                     Guardar Cambios
                   </button>
                 </form>
