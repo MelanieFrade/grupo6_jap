@@ -201,3 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload();
   };
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("email").value = sessionStorage.getItem("username");
+})
