@@ -27,3 +27,23 @@
   font-size: 18px;
   pointer-events: none; /* para que no bloquee el clic dentro del input */
 }
+
+/* Modo claro */
+[data-bs-theme="light"] .navbar {
+  /*background-color: var(--color-bg);*/
+  color: var(--color-text);
+}
+
+[data-bs-theme="light"] .navbar .nav-link {
+  color: var(--color-text);
+}
+
+/* Modo oscuro */
+[data-bs-theme="dark"] .navbar {
+  /*background-color: var(--color-bg-dark);*/
+  color: var(--color-text-dark);
+}
+
+[data-bs-theme="dark"] .navbar .nav-link {
+  color: var(--color-text-dark);
+}
