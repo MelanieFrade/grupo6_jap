@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // DOM
   const profileUpload = document.getElementById("profile-upload");
   const profileImg = document.getElementById("profile-img");
-  const profileForm = document.querySelector(".profile-form"); // tu form no tiene id, usa clase
+  const profileForm = document.querySelector(".profile-form"); 
   const inputNombre = document.getElementById("nombre");
   const inputApellido = document.getElementById("apellido");
   const inputEmail = document.getElementById("email");
   const inputTelefono = document.getElementById("telefono");
   const nombrePerfilSpan = document.getElementById("nombre-perfil");
-  const navUserSpan = document.getElementById("user-info"); // si existe en la navbar
+  const navUserSpan = document.getElementById("user-info"); 
 
   // --- Cargar datos desde localStorage ---
   function cargarDatosPerfil() {
