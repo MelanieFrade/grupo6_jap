@@ -1,3 +1,6 @@
+.nav-item{
+  color: var(--color-text);
+}
 .buscador-container {
   position: relative;
   width: 80%;
@@ -9,7 +12,7 @@
   border: 2px solid var(--color-border);
   border-radius: 30px;
   font-size: 16px;
-}
+} 
 #buscador:focus {
   outline: none;
   border-color: var(--color-border);
