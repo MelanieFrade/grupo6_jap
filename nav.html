@@ -14,7 +14,6 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav w-100 justify-content-between">
-
         <!-- Modo oscuro-->
         <li class="nav-item">
           <button onclick="changeMode()" class="btn rounded-fill">
@@ -28,32 +27,37 @@
         <li class="nav-item">
           <a class="nav-link active fs-3" href="categories.html">Categorías</a>
         </li>
-  
+
         <li class="nav-item">
           <a class="nav-link active fs-3" href="sell.html">Vender</a>
         </li>
 
-       <!-- Redireccion login-->
-        <li class="nav-item"> 
-        <a class="nav-link fs-3 bi bi-box-arrow-right" href="login.html"></a>
-      </li>
-      <!-- Searchbar-->
-      <li class="buscador-container">
-        <input type="search" id="buscador" placeholder="Buscar productos..." />
-        <i class="bi bi-search"></i>
-        <li class="nav-item">
-        </li>
-        </li>
         <!-- Icono + nombre de perfil con redireccion pagina de perfil-->
         <li class="nav-item d-flex align-items-center">
-          <a  href="my-profile.html" class="nav-link fs-4 d-flex align-items-center gap-2">
+          <a
+            href="my-profile.html"
+            class="nav-link fs-4 d-flex align-items-center gap-2"
+          >
             <i class="fa-sharp fa-solid fa-circle-user fa-2x"></i>
             <span id="user-info"></span>
-    </a>
+          </a>
         </li>
-      </li>
-       </ul>
-      </div> 
+
+        <!-- Redireccion login SALIR -->
+        <li class="nav-item">
+          <a class="nav-link fs-3 bi bi-box-arrow-right" href="login.html"></a>
+        </li>
+        
+        <!-- Searchbar-->
+        <li class="buscador-container">
+          <input
+            type="search"
+            id="buscador"
+            placeholder="Buscar productos..."
+          />
+          <i class="bi bi-search"></i>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
-   
