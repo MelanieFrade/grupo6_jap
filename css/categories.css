@@ -1,10 +1,14 @@
 body {
   background: linear-gradient(90deg, var(--color-background-secondary), var(--color-background));
 }
+.list-group-item {
+  background: var(--color-card);
+  color: var(--color-text);
+}
 main .container {
   padding-top: 30px; /* deja espacio arriba */
   padding-bottom: 30px;
-  
+  color: var(--color-card);
 }
 
 .zoom-hover {
