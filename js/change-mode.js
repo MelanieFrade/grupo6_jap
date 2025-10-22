@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Detectar si ya hay un modo guardado
   const savedMode = localStorage.getItem("theme") || "light";
   document.body.setAttribute("data-bs-theme", savedMode);
-  // Actualizar icono sol / luna luego de cargado el nav
   // Si hay un modo guardado, aplicarlo
   if (savedMode) {
     document.body.setAttribute("data-bs-theme", savedMode);
@@ -18,8 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Funciones de cambio
 function darkMode() {
+  // cambia la etiqueta en el body
   document.body.setAttribute("data-bs-theme", "dark");
+  // modifica el botón de cambio de modo (sol / luna)
   document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+  // carga el tema indicado en el localStor para que se guarde al cerrar
   localStorage.setItem("theme", "dark");
 };
 
@@ -30,7 +32,9 @@ function lightMode() {
 };
 
 function changeMode() {
+  // obtiene el tema actual del sitio
   const current = document.body.getAttribute("data-bs-theme");
+  // si es claro cambia a oscuro o a la inversa
   current === "light" ? darkMode() : lightMode();
 };
 
