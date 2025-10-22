@@ -28,3 +28,20 @@ buscador.addEventListener('input', () => {
       });
     });
 });
+function actualizarTema() {
+  const modo = localStorage.getItem("theme");
+  const prodTotal = document.getElementById("prodTotal");
+  
+  if (prodTotal) {
+    if (modo === "dark") {
+      prodTotal.classList.add("bg-warning");
+      prodTotal.classList.remove("bg-danger");
+    } else if (modo === "light") {
+      prodTotal.classList.add("bg-danger");
+      prodTotal.classList.remove("bg-warning");
+    }
+  }
+}
+
+actualizarTema();
+setInterval(actualizarTema, 10);

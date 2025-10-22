@@ -16,7 +16,7 @@
       <ul class="navbar-nav w-100 justify-content-between">
         <!-- Modo oscuro-->
         <li class="nav-item">
-          <button onclick="changeMode()" class="btn rounded-fill">
+          <button onclick="changeMode()" class="btn rounded-fill" id="chmode">
             <i id="dl-icon" class="bi bi-moon-fill"></i>
           </button>
         </li>
@@ -46,6 +46,12 @@
             placeholder="Buscar productos..."
           />
           <i class="bi bi-search"></i>
+        </li>
+        <!-- Icono de carrito con redireccion al carrito-->
+        <li class="nav-item">
+          <a class="nav-link fs-3 bi bi-cart3 position-relative" href="cart.html"><span id="prodTotal" class="position-absolute top-45 start-80 translate-middle badge-sm rounded-pill bg-danger">
+    0
+  </span></a>
         </li>
          <!-- Icono + nombre de perfil con redireccion pagina de perfil-->
         <li class="nav-item d-flex align-items-center">

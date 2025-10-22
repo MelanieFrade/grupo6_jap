@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } </strong></p>
               <p><strong>Categoría:</strong> ${infoProducto.category}</p>
               <p><strong>Vendidos:</strong> ${infoProducto.soldCount}</p>
+              <button id="btnComprar" class="btn btn-primary my-3">Comprar</button>
           </div>
         </div>
       `;
@@ -199,5 +200,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((err) => {
         console.error(err);
       });
+  }
+});
+
+//Funcionalidad comprar
+document.addEventListener("click", (e) => {
+  if (e.target.id === "btnComprar" || e.target.closest("#btnComprar")) {
+    const articuloaComprar = localStorage.setItem("item",localStorage.getItem("productoID"));
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    alert("Producto agregado al carrito");
+    carrito.push(localStorage.getItem("item"));
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    window.location.href = "cart.html";
   }
 });
