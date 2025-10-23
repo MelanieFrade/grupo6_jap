@@ -1,0 +1,5 @@
+.card {
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+}

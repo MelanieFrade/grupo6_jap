@@ -1,7 +1,7 @@
 h2{
   color: var(--color-text);
 }
-.btn{
+.btn {
   height: 48px;
   background: var(--color-button);
   
@@ -12,6 +12,9 @@ h2{
   font-weight: 600;
   padding-left: 4%;
   padding-right: 4%;
+}
+#chmode {
+  background: transparent;
 }
 /* CONTENEDOR PRINCIPAL */
 #detalleProducto {
@@ -74,7 +77,7 @@ section{
 
 }
 
-/*CARD COMENTARIOCREADO*/
+/*CARD COMENTARIO CREADO*/
 .card.p-3.mb-3 {
   background-color: var(--color-card);
   border-radius: 10px;
