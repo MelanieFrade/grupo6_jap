@@ -27,6 +27,11 @@ document.getElementById("btnLogin").addEventListener("click", function (e) {
     );
     return;
   }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(username)) {
+    alert("Por favor, ingrese un correo electrónico válido.");
+    return;
+  }
   sessionStorage.setItem("estaLogueado", "true");
   sessionStorage.setItem("username", username);
   window.location.href = "index.html";
