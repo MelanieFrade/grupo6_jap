@@ -203,4 +203,5 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Datos borrados. Se recargará la página.");
     location.reload();
   };
+  inputEmail.value = sessionStorage.getItem('username');
 });
