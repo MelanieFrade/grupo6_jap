@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p><strong>Categoría:</strong> ${infoProducto.category}</p>
               <p><strong>Vendidos:</strong> ${infoProducto.soldCount}</p>
               <button id="btnComprar" class="btn btn-primary my-3">Comprar</button>
+              <button id="btnCarrito" class="btn btn-primary my-3">Agregar al carrito</button>
           </div>
         </div>
       `;
@@ -212,5 +213,15 @@ document.addEventListener("click", (e) => {
     carrito.push(localStorage.getItem("item"));
     localStorage.setItem('carrito', JSON.stringify(carrito));
     window.location.href = "cart.html";
+  }
+});
+//Funcionalidad agregar al carrito
+document.addEventListener("click", (e) => {
+  if (e.target.id === "btnCarrito" || e.target.closest("#btnCarrito")) {
+    const articuloaComprar = localStorage.setItem("item",localStorage.getItem("productoID"));
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    alert("Producto agregado al carrito");
+    carrito.push(localStorage.getItem("item"));
+    localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 });
