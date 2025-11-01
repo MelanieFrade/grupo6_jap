@@ -34,9 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
   cartItems.innerHTML = "";
 
   if (uniqueProductIds.length === 0) {
-    cartItems.innerHTML = '<p class="text-center">Tu carrito está vacío</p>';
+    cartItems.innerHTML = '<h4 class="card text-center">Tu carrito está vacío</h4>';
+
     //prodTotal.textContent = "0";
-    costoTotal.textContent = "USD 0";
+    costoTotal.textContent = " 0";
     return;
   }
 
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return `
             <div class="card mb-3" id="product-${productInfo.id}">
                 <div class="row g-0">
-                    <div class="col-md-3">
+                    <div class="col col-img">
                         <img src="${
                           productInfo.images[0]
                         }" class="img-fluid rounded-start" alt="${productInfo.name}" style="height: 150px; object-fit: cover;">
@@ -69,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p class="card-text text-muted">${
                               productInfo.description || ""
                             }</p>
-                            <p class="card-text">Precio unitario: <strong>USD ${
-                              productInfo.cost
-                            }</strong></p>
+                            <p class="card-text">Precio unitario: <strong>${
+                              productInfo.currency
+                            } ${productInfo.cost}</strong></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="badge bg-primary">Cantidad: ${quantity}</span>
@@ -83,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                     })">-</button>   
                                 </div>
                                 <div>
-                                    <p class="card-text mb-0"><strong>Subtotal: USD ${subtotal}</strong></p>
+                                    <p class="card-text mb-0"><strong>Subtotal: ${
+                                      productInfo.currency
+                                    } ${subtotal}</strong></p>
                                 </div>
                             </div>
                             <button class="btn btn-danger btn-sm mt-2" onclick="removeFromCart(${

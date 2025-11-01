@@ -2,4 +2,11 @@
   background: var(--color-card);
   border: 2px solid var(--color-border);
   color: var(--color-text);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 1100px; /* ancho limite vista desktop */
+  /*width: 100%;*/
+}
+.col-img {
+  align-content: center;
 }
