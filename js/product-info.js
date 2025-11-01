@@ -217,7 +217,8 @@ document.addEventListener("click", (e) => {
     // Actualizar número del carrito
     // el badge sería el circulito con la cantidad del carrito
     const badge = document.getElementById("prodTotal");
-    if (badge) badge.textContent = carrito.length;    
+    if (badge) badge.textContent = carrito.length;   
+    window.location.href = "cart.html"; 
   }
 });
 //Funcionalidad agregar al carrito
@@ -234,6 +235,6 @@ document.addEventListener("click", (e) => {
     const badge = document.getElementById("prodTotal");
     if (badge) badge.textContent = carrito.length;
 
-    window.location.href = "cart.html";
+   
   }
 });

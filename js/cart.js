@@ -119,9 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
         cartItems.innerHTML += createProductCard(productInfo, quantity);
         totalProductos += quantity;
         totalPrecio += productInfo.cost * quantity;
+        costoTotal.textContent = `${productInfo.currency} ${totalPrecio.toFixed(2)}`;
       });
-
-      costoTotal.textContent = `USD ${totalPrecio.toFixed(2)}`;
+      
     } catch (error) {
       console.error("Error al cargar los productos:", error);
       cartItems.innerHTML =
@@ -157,11 +157,11 @@ function removeFromCart(productId) {
 // Función para eliminar solo una unidad de un producto
 function removeOneFromCart(productId) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const index = carrito.indexOf(productId);
-  if (index !== -1) carrito.splice(index, 1);
+  //const index = carrito.indexOf(productId);
+  //if (index !== -1) carrito.splice(index, 1);
 
   // Encontrar la primera ocurrencia del producto y eliminarla
-  /*for (let i = 0; i < carrito.length; i++) {
+  for (let i = 0; i < carrito.length; i++) {
         const item = carrito[i];
         
         if ((typeof item === 'number' || typeof item === 'string') && item == productId) {
@@ -174,7 +174,7 @@ function removeOneFromCart(productId) {
             carrito.splice(i, 1);
             break;
         }
-    }*/
+    }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
   //location.reload();
