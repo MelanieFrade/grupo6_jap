@@ -25,31 +25,32 @@ document.addEventListener("DOMContentLoaded", () => {
           const contenido = tarjeta.textContent.toLowerCase();
           tarjeta.style.display = contenido.includes(texto) ? "" : "none";
         });
-        // Actualizar cantidad del carrito
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        const prodTotal = document.getElementById("prodTotal");
-        prodTotal.textContent = carrito.length;
+        
+      });
+      // Actualizar cantidad del carrito
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const prodTotal = document.getElementById("prodTotal");
+      prodTotal.textContent = carrito.length;
 
-        // Escuchar cambios en el carrito (desde otras páginas)
-        window.addEventListener("storage", () => {
-          const carritoActualizado =
-            JSON.parse(localStorage.getItem("carrito")) || [];
-          prodTotal.textContent = carritoActualizado.length;
-        });
+      // Escuchar cambios en el carrito (desde otras páginas)
+      window.addEventListener("storage", () => {
+        const carritoActualizado =
+          JSON.parse(localStorage.getItem("carrito")) || [];
+        prodTotal.textContent = carritoActualizado.length;
       });
     });
 
   // Ejecutar al cargar
   actualizarContadorCarrito();
-
   // Escuchar cambios en localStorage (por si se modifica desde otra página)
   window.addEventListener("storage", actualizarContadorCarrito);
 });
+
 // Mostrar cantidad del carrito en el logo del carrito
 function actualizarContadorCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const prodTotal = document.getElementById("prodTotal");
-  if (prodTotal) prodTotal.textContent = carrito.length;
+  if (prodTotal) prodTotal.textContent = carrito;
 }
 function actualizarTema() {
   const modo = localStorage.getItem("theme");

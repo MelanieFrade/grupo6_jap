@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (uniqueProductIds.length === 0) {
     cartItems.innerHTML = '<p class="text-center">Tu carrito está vacío</p>';
-    prodTotal.textContent = "0";
+    //prodTotal.textContent = "0";
     costoTotal.textContent = "USD 0";
     return;
   }
@@ -191,9 +191,10 @@ function addOneToCart(productId) {
 // Función para vaciar todo el carrito
 function clearCart() {
   localStorage.removeItem("carrito");
-  location.reload();
+  //location.reload();
+  actualizarVista();
 }
-
+// Función para actualizar la vista sin recargar el sitio
 function actualizarVista() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const badge = document.getElementById("prodTotal");

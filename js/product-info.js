@@ -215,10 +215,9 @@ document.addEventListener("click", (e) => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
     // Actualizar número del carrito
+    // el badge sería el circulito con la cantidad del carrito
     const badge = document.getElementById("prodTotal");
-    if (badge) badge.textContent = carrito.length;
-
-    alert("Producto agregado al carrito");
+    if (badge) badge.textContent = carrito.length;    
   }
 });
 //Funcionalidad agregar al carrito
@@ -235,7 +234,6 @@ document.addEventListener("click", (e) => {
     const badge = document.getElementById("prodTotal");
     if (badge) badge.textContent = carrito.length;
 
-    alert("Producto agregado al carrito");
     window.location.href = "cart.html";
   }
 });
