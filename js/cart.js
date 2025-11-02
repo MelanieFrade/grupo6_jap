@@ -119,7 +119,14 @@ document.addEventListener("DOMContentLoaded", function () {
         cartItems.innerHTML += createProductCard(productInfo, quantity);
         totalProductos += quantity;
         totalPrecio += productInfo.cost * quantity;
-        costoTotal.textContent = `${productInfo.currency} ${totalPrecio.toFixed(2)}`;
+        if (productInfo.currency == "USD") {
+          let precioDolar = productInfo.cost * 40;
+          costoTotal.textContent = `UYU ${(
+            precioDolar * quantity + (totalPrecio - productInfo.cost * quantity)
+          ).toFixed(2)}`;
+        } else {
+          costoTotal.textContent = `${productInfo.currency} ${totalPrecio.toFixed(2)}`;
+        }
       });
       
     } catch (error) {
