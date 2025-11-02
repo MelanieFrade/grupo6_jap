@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // DOM
   const profileUpload = document.getElementById("profile-upload");
   const profileImg = document.getElementById("profile-img");
-  const profileForm = document.querySelector(".profile-form"); 
+  const profileForm = document.querySelector("#profile-form"); 
   const inputNombre = document.getElementById("nombre");
   const inputApellido = document.getElementById("apellido");
   const inputEmail = document.getElementById("email");
