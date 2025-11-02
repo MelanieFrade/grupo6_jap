@@ -57,48 +57,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotal = productInfo.cost * quantity;
 
     return `
-            <div class="card mb-3" id="product-${productInfo.id}">
-                <div class="row g-0">
-                    <div class="col col-img">
-                        <img src="${
-                          productInfo.images[0]
-                        }" class="img-fluid rounded-start" alt="${productInfo.name}" style="height: 150px; object-fit: cover;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${productInfo.name}</h5>
-                            <p class="card-text text-muted">${
-                              productInfo.description || ""
-                            }</p>
-                            <p class="card-text">Precio unitario: <strong>${
-                              productInfo.currency
-                            } ${productInfo.cost}</strong></p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="badge bg-primary">Cantidad: ${quantity}</span>
-                                    <button class="btn btn-sm btn-secondary ms-1" onclick="addOneToCart(${
-                                      productInfo.id
-                                    })">+</button>
-                                    <button class="btn btn-sm btn-secondary ms-2" onclick="removeOneFromCart(${
-                                      productInfo.id
-                                    })">-</button>   
-                                </div>
-                                <div>
-                                    <p class="card-text mb-0"><strong>Subtotal: ${
-                                      productInfo.currency
-                                    } ${subtotal}</strong></p>
-                                </div>
-                            </div>
-                            <button class="btn btn-danger btn-sm mt-2" onclick="removeFromCart(${
-                              productInfo.id
-                            })">
-                                <i class="fas fa-trash"></i> Eliminar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+  <div class="card mb-3" id="product-${productInfo.id}">
+    <div class="row g-0 align-items-center">
+      <div class="col-12 col-md-4 col-img">
+        <img src="${productInfo.images[0]}"
+             class="img-fluid rounded-start product-image"
+             alt="${productInfo.name}">
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">${productInfo.name}</h5>
+          <p class="card-text text-muted">${productInfo.description || ""}</p>
+          <p class="card-text">
+            Precio unitario: <strong>${productInfo.currency} ${productInfo.cost}</strong>
+          </p>
+          <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="mb-2">
+              <span class="badge bg-primary">Cantidad: ${quantity}</span>
+              <button class="btn btn-sm btn-secondary ms-1" onclick="addOneToCart(${productInfo.id})">+</button>
+              <button class="btn btn-sm btn-secondary ms-2" onclick="removeOneFromCart(${productInfo.id})">-</button>
             </div>
-        `;
+            <div>
+              <p class="card-text mb-0">
+                <strong>Subtotal: ${productInfo.currency} ${productInfo.cost * quantity}</strong>
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-sm mt-2" onclick="removeFromCart(${productInfo.id})">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+
   }
 
   async function processCartItems() {
