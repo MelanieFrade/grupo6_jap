@@ -177,46 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   cargarDireccion();
 
-  // FUNCIONES MODIFICAR CARRITO
-
-  function removeFromCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito = carrito.filter((item) => item != productId);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
-  }
-
-  function removeOneFromCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    for (let i = 0; i < carrito.length; i++) {
-      const item = carrito[i];
-      if (item == productId || item?.id == productId) {
-        carrito.splice(i, 1);
-        break;
-      }
-    }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
-  }
-
-  function addOneToCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.push(productId);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
-  }
-
-  function clearCart() {
-    localStorage.removeItem("carrito");
-    actualizarVista();
-  }
-
-  // Re-render
-  function actualizarVista() {
-    document.getElementById("cart-items").innerHTML = "";
-    document.getElementById("cart-total").textContent = "";
-    document.dispatchEvent(new Event("DOMContentLoaded"));
-  }
+  
 
   // ============================================================= //
 
@@ -270,10 +231,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Bind: antes de abrir modal rellenamos (si existe)
- /* const modalEl = document.getElementById("direccionModal");
+ const modalEl = document.getElementById("direccionModal");
   if (modalEl) {
     modalEl.addEventListener("show.bs.modal", fillModalWithAddress);
-  }*/
+  }
 
   // Submit del form: guardar en localStorage y actualizar la vista
   if (form) {
@@ -298,10 +259,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newAddress));
       // cerrar modal
-      const bsModal = bootstrap.Modal.getInstance(modal);
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
       if (bsModal) bsModal.hide();
 
       cargarDireccion();
     });
   }
 });
+
+// FUNCIONES MODIFICAR CARRITO
+
+  function removeFromCart(productId) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito = carrito.filter((item) => item != productId);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarVista();
+  }
+
+  function removeOneFromCart(productId) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    for (let i = 0; i < carrito.length; i++) {
+      const item = carrito[i];
+      if (item == productId || item?.id == productId) {
+        carrito.splice(i, 1);
+        break;
+      }
+    }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarVista();
+  }
+
+  function addOneToCart(productId) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push(productId);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarVista();
+  }
+
+  function clearCart() {
+    localStorage.removeItem("carrito");
+    actualizarVista();
+  }
+
+  // Re-render
+  function actualizarVista() {
+    document.getElementById("cart-items").innerHTML = "";
+    document.getElementById("cart-total").textContent = "";
+    document.dispatchEvent(new Event("DOMContentLoaded"));
+  }
