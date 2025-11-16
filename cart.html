@@ -191,21 +191,45 @@
       <section></section>
 
       <section>
-        <div
-          class="col-12 col-md-9 col-lg-10 p-4 align-items-center justify-content-center mx-auto my-5"
-        >
-          <div class="card shadow-sm p-4">
-            <h3>Método de pago</h3>
-            <label>
-              <input type="radio" name="pago" value="transferencia" />
-              Tarjeta de crédito/débito
-            </label>
-            <label>
-              <input type="radio" name="pago" value="efectivo" />
-              Transferencia bancaria
-            </label>
+          <div class="col-12 col-md-9 col-lg-10 p-4 align-items-center justify-content-center mx-auto my-5">
+              <div class="card shadow-sm p-4">
+                  <h3>Método de pago</h3>
+                  
+                  <label>
+                      <input type="radio" name="pago" value="pagoTarjeta">
+                      Tarjeta de crédito/débito
+                      <div id="tarjetaForm" style="display: none">
+                          <form id="cardPayment">
+                              <div class="mb-3">
+                                  <label for="card-number" class="form-label">Número de tarjeta</label>
+                                  <input type="text" class="form-control" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="card-expiry" class="form-label">Fecha de vencimiento</label>
+                                  <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="card-cvc" class="form-label">CVC</label>
+                                  <input type="text" class="form-control" id="card-cvc" placeholder="CVC" required>
+                              </div>
+                          </form>
+                      </div>
+                  </label>
+                  
+                  <label>
+                      <input type="radio" name="pago" value="transferencia">
+                      Transferencia bancaria
+                      <div id="transferenciaForm" style="display: none">
+                          <form id="bankPayment">
+                              <div class="mb-3">
+                                  <label for="bank-account" class="form-label">Número de cuenta</label>
+                                  <input type="text" class="form-control" id="bank-account" placeholder="XXXX-XXXX" required>
+                              </div>
+                          </form>
+                      </div>
+                  </label>
+              </div>
           </div>
-        </div>
       </section>
 
       <section>
@@ -214,12 +238,10 @@
         >
           <div class="card shadow-sm p-4">
             <h3>Resumen de compra</h3>
-            <h4 class="me-4">Subtotal: <span id="cart-total"></span></h4>
-            <p id="resumen-envio">Costo de envío:</p>
-            <p id="resumen-total">Total a pagar:</p>
-            <button id="checkout-btn" class="btn btn-primary">
-              Finalizar Compra
-            </button>
+            <p class="me-4">Subtotal: <span id="cart-total"></span></p>
+            <p id="resumen-envio">Costo de envío: </p>
+            <h4 id="resumen-total">Total a pagar: </h4>
+            <button id="checkout-btn" class="btn btn-primary">Finalizar Compra</button>
           </div>
         </div>
       </section>

@@ -55,6 +55,25 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  const radioButtons = document.querySelectorAll('input[name="pago"]');
+  const tarjetaForm = document.getElementById('tarjetaForm');
+  const transferenciaForm = document.getElementById('transferenciaForm');
+
+  radioButtons.forEach(radio => {
+      radio.addEventListener('change', function() {
+          // Ocultar todos los formularios primero
+           tarjetaForm.style.display = 'none';
+          transferenciaForm.style.display = 'none';
+
+          // Mostrar el formulario correspondiente al radio seleccionado
+          if (this.value === 'pagoTarjeta') {
+               tarjetaForm.style.display = 'block';
+          } else if (this.value === 'transferencia') {
+              transferenciaForm.style.display = 'block';
+          }
+      });
+  });
+
   // Obtener producto
   function fetchProductInfo(productId) {
     let url = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
