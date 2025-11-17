@@ -1,3 +1,8 @@
+const CART_KEY = "carrito";
+const ADDR_KEY = "shippingAddress";
+
+//const rawAddr = localStorage.getItem(ADDR_KEY);
+
 document.addEventListener("DOMContentLoaded", function () {
   const cartItems = document.getElementById("cart-items");
   const costoTotal = document.getElementById("cart-total");
@@ -17,10 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const show_calle = document.getElementById("show-calle");
   const show_numero = document.getElementById("show-numero");
   const show_esquina = document.getElementById("show-esquina");
-
-  const STORAGE_KEY = "shippingAddress";
-
-  //***
 
   let subtotal = 0;
   let porcentajeEnvio = 0;
@@ -44,34 +45,46 @@ document.addEventListener("DOMContentLoaded", function () {
   const productQuantities = getProductQuantities(carrito);
   const uniqueProductIds = Object.keys(productQuantities);
 
-  // Limpiar contenedor
+  // LIMPIAR CONTENEDOR
   cartItems.innerHTML = "";
+  const btn_vaciar_carrito = document.getElementById("vaciar_carrito");
+  const contenedor_envio = document.getElementById("contenedor_envio");
+  const contenedor_metodo_pago = document.getElementById(
+    "contenedor_metodo_pago"
+  );
+  const contenedor_resumen_compra = document.getElementById(
+    "contenedor_resumen_compra"
+  );
 
   if (uniqueProductIds.length === 0) {
     cartItems.innerHTML =
       '<h4 class="card text-center">Tu carrito está vacío</h4>';
+    btn_vaciar_carrito.style.display = "none";
+    contenedor_envio.style.display = "none";
+    contenedor_metodo_pago.style.display = "none";
+    contenedor_resumen_compra.style.display = "none";
     costoTotal.textContent = "0";
     actualizarCostos();
     return;
   }
 
   const radioButtons = document.querySelectorAll('input[name="pago"]');
-  const tarjetaForm = document.getElementById('tarjetaForm');
-  const transferenciaForm = document.getElementById('transferenciaForm');
+  const tarjetaForm = document.getElementById("tarjetaForm");
+  const transferenciaForm = document.getElementById("transferenciaForm");
 
-  radioButtons.forEach(radio => {
-      radio.addEventListener('change', function() {
-          // Ocultar todos los formularios primero
-           tarjetaForm.style.display = 'none';
-          transferenciaForm.style.display = 'none';
+  radioButtons.forEach((radio) => {
+    radio.addEventListener("change", function () {
+      // Ocultar todos los formularios primero
+      tarjetaForm.style.display = "none";
+      transferenciaForm.style.display = "none";
 
-          // Mostrar el formulario correspondiente al radio seleccionado
-          if (this.value === 'pagoTarjeta') {
-               tarjetaForm.style.display = 'block';
-          } else if (this.value === 'transferencia') {
-              transferenciaForm.style.display = 'block';
-          }
-      });
+      // Mostrar el formulario correspondiente al radio seleccionado
+      if (this.value === "pagoTarjeta") {
+        tarjetaForm.style.display = "block";
+      } else if (this.value === "transferencia") {
+        transferenciaForm.style.display = "block";
+      }
+    });
   });
 
   // Obtener producto
@@ -196,14 +209,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   cargarDireccion();
 
-  
+  // INGRESAR DIRECCIÓN
 
-  // ============================================================= //
-
-  // ---------- Shipping: load & display ----------
   function cargarDireccion() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
+    const rawAddr = localStorage.getItem(ADDR_KEY);
+    if (!rawAddr) {
       if (show_departamento)
         show_departamento.querySelector("span").textContent = "—";
       if (show_localidad)
@@ -215,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const addr = JSON.parse(raw);
+      const addr = JSON.parse(rawAddr);
       if (show_departamento)
         show_departamento.querySelector("span").textContent =
           addr.departamento || "—";
@@ -233,12 +243,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Rellena modal inputs con la dirección guardada (útil para editar)
+  // Rellena modal inputs con la dirección guardada
   function fillModalWithAddress() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
+    const rawAddr = localStorage.getItem(ADDR_KEY);
+    if (!rawAddr) return;
     try {
-      const addr = JSON.parse(raw);
+      const addr = JSON.parse(rawAddr);
       if (departamento) departamento.value = addr.departamento || "";
       if (localidad) localidad.value = addr.localidad || "";
       if (calle) calle.value = addr.calle || "";
@@ -249,13 +259,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Bind: antes de abrir modal rellenamos (si existe)
- const modalEl = document.getElementById("direccionModal");
+  // Completar modal con datos ya cargados, para poder modificarlos
+  const modalEl = document.getElementById("direccionModal");
   if (modalEl) {
     modalEl.addEventListener("show.bs.modal", fillModalWithAddress);
   }
 
-  // Submit del form: guardar en localStorage y actualizar la vista
+  // Guardar datos y actualizar vista
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -276,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newAddress));
+      localStorage.setItem(ADDR_KEY, JSON.stringify(newAddress));
       // cerrar modal
       const bsModal = bootstrap.Modal.getInstance(modalEl);
       if (bsModal) bsModal.hide();
@@ -284,45 +294,130 @@ document.addEventListener("DOMContentLoaded", function () {
       cargarDireccion();
     });
   }
+  document
+    .getElementById("checkout-btn")
+    ?.addEventListener("click", limpiarCarrito);
 });
 
 // FUNCIONES MODIFICAR CARRITO
 
-  function removeFromCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito = carrito.filter((item) => item != productId);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
-  }
+function removeFromCart(productId) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito = carrito.filter((item) => item != productId);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarVista();
+}
 
-  function removeOneFromCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    for (let i = 0; i < carrito.length; i++) {
-      const item = carrito[i];
-      if (item == productId || item?.id == productId) {
-        carrito.splice(i, 1);
-        break;
-      }
+function removeOneFromCart(productId) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  for (let i = 0; i < carrito.length; i++) {
+    const item = carrito[i];
+    if (item == productId || item?.id == productId) {
+      carrito.splice(i, 1);
+      break;
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarVista();
+}
+
+function addOneToCart(productId) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.push(productId);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarVista();
+}
+
+function clearCart() {
+  localStorage.removeItem("carrito");
+  actualizarVista();
+}
+
+// Re-render
+function actualizarVista() {
+  document.getElementById("cart-items").innerHTML = "";
+  document.getElementById("cart-total").textContent = "";
+  document.dispatchEvent(new Event("DOMContentLoaded"));
+}
+
+function limpiarCarrito() {
+  //Deberá estar seleccionada la forma de envío.
+  const envioSel = document.querySelector('input[name="envio"]:checked');
+  if (!envioSel) {
+    alert("Debes seleccionar una forma de envío.");
+    return;
   }
 
-  function addOneToCart(productId) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.push(productId);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarVista();
+  //Los campos asociados a la dirección no podrán estar vacíos.
+  const rawAddr = localStorage.getItem(ADDR_KEY);
+  if (!rawAddr) {
+    alert("Debes ingresar tu dirección de envío.");
+    return;
+  }
+  let addr;
+  try {
+    addr = JSON.parse(rawAddr);
+  } catch (e) {
+    alert("Dirección errónea. Volvé a ingresarla.");
+    return;
+  }
+  if (
+    !addr.departamento ||
+    !addr.localidad ||
+    !addr.calle ||
+    !addr.numero ||
+    !addr.esquina
+  ) {
+    alert(
+      "Los campos de dirección (departamento, localidad, calle, numero, esquina) no pueden estar vacíos."
+    );
+    return;
   }
 
-  function clearCart() {
-    localStorage.removeItem("carrito");
-    actualizarVista();
+  //La cantidad para cada producto deberá estar definida y ser mayor a 0.
+  //si el carrito está vacío, no se muestran los dampos para la compra
+  // Línea 46: LIMPIAR CONTENEDOR
+
+  //Deberá haberse seleccionado una forma de pago.
+  const pagoSel = document.querySelector('input[name="pago"]:checked');
+  if (!pagoSel) {
+    alert("Debes seleccionar un método de pago.");
+    return;
   }
 
-  // Re-render
-  function actualizarVista() {
-    document.getElementById("cart-items").innerHTML = "";
-    document.getElementById("cart-total").textContent = "";
-    document.dispatchEvent(new Event("DOMContentLoaded"));
+  //Los campos para la forma de pago seleccionada no podrán estar vacíos.
+  const pagoVal = pagoSel.value;
+  if (pagoVal === "pagoTarjeta") {
+    const numeroTarjeta = document.getElementById("card-number");
+    const vencimientoTarjeta = document.getElementById("card-expiry");
+    const codigoTarjeta = document.getElementById("card-cvc");
+    if (!numeroTarjeta || !vencimientoTarjeta || !codigoTarjeta) {
+      alert("Faltan campos de tarjeta en el HTML.");
+      return;
+    }
+    if (
+      !numeroTarjeta.value.trim() ||
+      !vencimientoTarjeta.value.trim() ||
+      !codigoTarjeta.value.trim()
+    ) {
+      alert("Completá los datos de la tarjeta (número, vencimiento, codigo).");
+      return;
+    }
+  } else if (pagoVal === "transferencia") {
+    const bankAccount = document.getElementById("bank-account");
+    if (!bankAccount) {
+      alert("Falta el campo de transferencia.");
+      return;
+    }
+    if (!bankAccount.value.trim()) {
+      alert("Completá el número de cuenta para la transferencia.");
+      return;
+    }
   }
+
+  // ELIMINAR DATOS DE COMPRA
+  localStorage.removeItem(CART_KEY);
+  localStorage.removeItem(ADDR_KEY);
+  alert("Compra realizada con exito! Gracias");
+  window.location.href = "index.html";
+}
