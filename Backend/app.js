@@ -1,0 +1,36 @@
+const express = require("express"); // utilizando el framework
+const app = express(); //instancia de express
+const puerto = 3000; //puerto que voy a escuchar
+const path = require("path") 
+const cors = require("cors");
+
+app.use(express.json());
+app.use(cors());
+//api
+app.use(express.static(path.join(__dirname,"api")));
+
+
+app.use("/cats", express.static(path.join(__dirname, "api/cats")));
+app.use("/cats_products", express.static(path.join(__dirname, "api/cats_products")));
+app.use("/products", express.static(path.join(__dirname, "api/products")));
+app.use("/products_comments", express.static(path.join(__dirname, "api/products_comments")));
+app.use("/user_cart", express.static(path.join(__dirname, "api/user_cart")));
+app.use("/sell", express.static(path.join(__dirname, "api/sell")));
+app.use("/cart", express.static(path.join(__dirname, "api/cart")));
+
+// front
+app.use(express.static(path.join(__dirname, "../Frontend")));
+
+const frontendPath = path.join(__dirname, "../Frontend");
+console.log("Frontend path:", frontendPath);
+
+
+
+
+app.listen(puerto, ()=> {
+  console.log(`Servidor funcionando en http://localhost:${puerto}`)
+});
+
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando!");
+});
