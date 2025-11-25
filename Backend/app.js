@@ -4,6 +4,7 @@ const puerto = 3000; //puerto que voy a escuchar
 const path = require("path") 
 const cors = require("cors");
 
+const dataFolderPath = path.join(__dirname);
 app.use(express.json());
 app.use(cors());
 //api
