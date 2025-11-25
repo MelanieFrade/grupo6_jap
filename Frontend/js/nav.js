@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("nav.html")
+  fetch("http://localhost:3000/nav.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("nav").innerHTML = data;

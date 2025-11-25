@@ -19,10 +19,10 @@ app.use("/sell", express.static(path.join(__dirname, "api/sell")));
 app.use("/cart", express.static(path.join(__dirname, "api/cart")));
 
 // front
-app.use(express.static(path.join(__dirname, "../Frontend")));
 
-const frontendPath = path.join(__dirname, "../Frontend");
-console.log("Frontend path:", frontendPath);
+const frontPath = path.join(__dirname, "../Frontend");
+app.use(express.static(frontPath));
+console.log("Frontend path:", frontPath);
 
 
 
