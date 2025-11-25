@@ -9,6 +9,18 @@ app.use(cors());
 //api
 app.use(express.static(path.join(__dirname,"api")));
 
+app.get('/cats_products/:id', (req, res) => {
+    const cats_productsId = req.params.id;
+    const filePath = path.join(dataFolderPath, `cats_products`, `${cats_productsId}.json`);
+    res.sendFile(filePath);
+});
+
+app.get('/products/:id', (req, res) => {
+    const productId = req.params.id;
+    const filePath = path.join(dataFolderPath, `products`, `${productId}.json`);
+    res.sendFile(filePath);
+});
+
 
 app.use("/cats", express.static(path.join(__dirname, "api/cats")));
 app.use("/cats_products", express.static(path.join(__dirname, "api/cats_products")));
