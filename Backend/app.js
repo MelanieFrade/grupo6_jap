@@ -5,37 +5,59 @@ const path = require("path")
 const cors = require("cors");
 
 const dataFolderPath = path.join(__dirname);
+
 app.use(express.json());
 app.use(cors());
-//api
-app.use(express.static(path.join(__dirname,"api")));
+
+// Servir frontend entero
+app.use(express.static(path.join(__dirname, "../Frontend")));
+
+
+
+
+app.use("/api", express.static(path.join(__dirname, "api")));
 
 app.get('/cats_products/:id', (req, res) => {
     const cats_productsId = req.params.id;
-    const filePath = path.join(dataFolderPath, `cats_products`, `${cats_productsId}.json`);
+   const filePath = path.join(__dirname, "api", "cats_products", `${cats_productsId}.json`);
+
+    res.sendFile(filePath);
+});
+
+app.get('/cats/', (req, res) => {
+    const filePath = path.join(dataFolderPath,"api", `cats`, `cats`);
     res.sendFile(filePath);
 });
 
 app.get('/products/:id', (req, res) => {
     const productId = req.params.id;
-    const filePath = path.join(dataFolderPath, `products`, `${productId}.json`);
+    const filePath = path.join(dataFolderPath, "api", `products`, `${productId}.json`);
     res.sendFile(filePath);
 });
 
+app.get("/products_comments/:id", (req, res)=> {
+  const products_commentsId = req.params.id;
+  const filePath = path.join(dataFolderPath, `products_comments`, `${products_commentsId}.json`);
+res.sendFile(filePath);
 
-app.use("/cats", express.static(path.join(__dirname, "api/cats")));
-app.use("/cats_products", express.static(path.join(__dirname, "api/cats_products")));
-app.use("/products", express.static(path.join(__dirname, "api/products")));
-app.use("/products_comments", express.static(path.join(__dirname, "api/products_comments")));
-app.use("/user_cart", express.static(path.join(__dirname, "api/user_cart")));
-app.use("/sell", express.static(path.join(__dirname, "api/sell")));
-app.use("/cart", express.static(path.join(__dirname, "api/cart")));
+});
+app.get("/sell/:id", (req,res)=> {
+  const sellId= req.params.id;
+  const filePath = path.join(dataFolderPath, `sell`, `${sellId}.json`);
+  res.sendFile(filePath);
+});
 
-// front
+app.get("/user_cart/:id", (req,res) => {
+  const userId = req.params.id;
+  const filePath = path.join(dataFolderPath, `user_cart`, `${userID}.json`)
+  res.sendFile(filePath);
+})
+app.get("/nav.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "nav.html"));
+});
 
-const frontPath = path.join(__dirname, "../Frontend");
-app.use(express.static(frontPath));
-console.log("Frontend path:", frontPath);
+
+
 
 
 
