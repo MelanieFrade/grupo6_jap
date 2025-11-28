@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // MOSTRAR LOS DETALLES DEL PRODUCTO SELECCIONADO
-  let url = `https://localhost:3000/products/${prodID}.json`;
+ let url = `http://localhost:3000/products/${prodID}`;
+
   fetch(url)
     .then((response) => {
       if (!response.ok) {

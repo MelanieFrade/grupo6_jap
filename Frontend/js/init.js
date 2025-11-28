@@ -1,11 +1,11 @@
-const CATEGORIES_URL = "http://localhost:3000/cats/cats.json";
+const CATEGORIES_URL = "http://localhost:3000/api/cats/cats.json";
 const PUBLISH_PRODUCT_URL = "http://localhost:3000/sell/publish.json";
 const PRODUCTS_URL = "http://localhost:3000/cats_products/";
 const PRODUCT_INFO_URL = "http://localhost:3000/products/";
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/products_comments/";
 const CART_INFO_URL = "http://localhost:3000/user_cart/";
 const CART_BUY_URL = "http://localhost:3000/cart/buy.json/";
-const EXT_TYPE = ".json";
+const EXT_TYPE = "";
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
