@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // MOSTRAR LOS DETALLES DEL PRODUCTO SELECCIONADO
- let url = `http://localhost:3000/products/${prodID}`;
+  //let url = `http://localhost:3000/products/${prodID}`;
+  let url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
   fetch(url)
     .then((response) => {
@@ -154,7 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
     div.classList.add("card-base", "card-comment");
     div.innerHTML = `
       <strong>Tú</strong> 
-      <p class="mb-0">${"⭐".repeat(selectedRating)}${"☆".repeat(5 - selectedRating)}</p>
+      <p class="mb-0">${"⭐".repeat(selectedRating)}${"☆".repeat(
+      5 - selectedRating
+    )}</p>
       <p class="mb-0">${comment}</p>
     `;
     ratingsList.appendChild(div);
@@ -209,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", (e) => {
   if (e.target.id === "btnComprar" || e.target.closest("#btnComprar")) {
     // const articuloaComprar = localStorage.setItem("item",localStorage.getItem("productoID"));
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     alert("Producto agregado al carrito");
     const producto = localStorage.getItem("productoID");
     carrito.push(producto);
@@ -218,15 +221,15 @@ document.addEventListener("click", (e) => {
     // Actualizar número del carrito
     // el badge sería el circulito con la cantidad del carrito
     const badge = document.getElementById("prodTotal");
-    if (badge) badge.textContent = carrito.length;   
-    window.location.href = "cart.html"; 
+    if (badge) badge.textContent = carrito.length;
+    window.location.href = "cart.html";
   }
 });
 //Funcionalidad agregar al carrito
 document.addEventListener("click", (e) => {
   if (e.target.id === "btnCarrito" || e.target.closest("#btnCarrito")) {
     // const articuloaComprar = localStorage.setItem("item",localStorage.getItem("productoID"));
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     alert("Producto agregado al carrito");
     const producto = localStorage.getItem("productoID");
     carrito.push(producto);
@@ -235,7 +238,5 @@ document.addEventListener("click", (e) => {
     // Actualizar número del carrito
     const badge = document.getElementById("prodTotal");
     if (badge) badge.textContent = carrito.length;
-
-   
   }
 });

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:3000/nav.html")
+  //fetch("http://localhost:3000/nav.html")
+  fetch("nav.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("nav").innerHTML = data;
@@ -25,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const contenido = tarjeta.textContent.toLowerCase();
           tarjeta.style.display = contenido.includes(texto) ? "" : "none";
         });
-        
       });
       // Actualizar cantidad del carrito
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
