@@ -12,30 +12,61 @@ loginBtn.addEventListener("click", () => {
 });
 
 // VALIDACIÓN LOGIN
-document.getElementById("btnLogin").addEventListener("click", function (e) {
-  e.preventDefault();
-  let username = document.getElementById("login-username").value.trim();
-  let password = document.getElementById("login-password").value.trim();
-  console.log(username + password);
-  if (username === "" || password === "") {
-    alert("Por favor, complete todos los campos.");
-    return;
+document.getElementById("btnLogin").addEventListener(
+  "click",
+  /*async*/ function (e) {
+    e.preventDefault();
+    let username = document.getElementById("login-username").value.trim();
+    let password = document.getElementById("login-password").value.trim();
+    console.log(username + password);
+    if (username === "" || password === "") {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+    if (username.length < 5 || password.length < 5) {
+      alert(
+        "El nombre de usuario y la contraseña deben tener al menos 5 caracteres."
+      );
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(username)) {
+      alert("Por favor, ingrese un correo electrónico válido.");
+      return;
+    }
+
+    /*try {
+      //https://japceibal.github.io/emercado-api/cats_products/${catID}.json
+      const res = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Error al iniciar sesión");
+        return;
+      }
+
+      // Guardar token y user para usar en el front
+      localStorage.setItem("token", data.token); // token persistente
+      sessionStorage.setItem("estaLogueado", "true");
+      sessionStorage.setItem("username", data.user.username);
+
+      // opcional: redirigir
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error(err);
+      alert("Error de red al intentar iniciar sesión.");
+    }*/
+
+    sessionStorage.setItem("estaLogueado", "true");
+    sessionStorage.setItem("username", username);
+    window.location.href = "index.html";
   }
-  if (username.length < 5 || password.length < 5) {
-    alert(
-      "El nombre de usuario y la contraseña deben tener al menos 5 caracteres."
-    );
-    return;
-  }
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(username)) {
-    alert("Por favor, ingrese un correo electrónico válido.");
-    return;
-  }
-  sessionStorage.setItem("estaLogueado", "true");
-  sessionStorage.setItem("username", username);
-  window.location.href = "index.html";
-});
+);
 
 // VALIDACIÓN REGISTRO
 document.getElementById("btnRegister").addEventListener("click", function (e) {
@@ -43,9 +74,16 @@ document.getElementById("btnRegister").addEventListener("click", function (e) {
   let username = document.getElementById("register-username").value.trim();
   let email = document.getElementById("register-email").value.trim();
   let password = document.getElementById("register-password").value.trim();
-  let confirmPassword = document.getElementById("confirm-password").value.trim();
+  let confirmPassword = document
+    .getElementById("confirm-password")
+    .value.trim();
 
-  if (username === "" || email === "" || password === "" || confirmPassword === "") {
+  if (
+    username === "" ||
+    email === "" ||
+    password === "" ||
+    confirmPassword === ""
+  ) {
     alert("Por favor, complete todos los campos.");
     return;
   }

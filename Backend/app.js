@@ -6,6 +6,14 @@ const cors = require("cors");
 const mariadb = require("mariadb"); //libreria para conectar con base de datos mariaDB
 const jwt = require("jsonwebtoken");
 
+/*app.use(
+  cors({
+    origin: "http://localhost:5500", // o "http://localhost:5500" según tu Live Server
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);*/
+
 app.use(express.json());
 
 // AUTENTICACIÓN Y MIDDLEWARE
@@ -14,7 +22,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "clave_segura";
 const JWT_EXPIRES_IN = "1h"; // ajustar según necesidad
 
 const users = [
-  { id: 1, username: "admin@mail.com", password: "admin123" },
+  { id: 1, username: "nombre@mail.com", password: "nombre123" },
   { id: 2, username: "melanie@mail.com", password: "pass123" },
 ];
 
@@ -80,16 +88,6 @@ app.get("/api/protected", authenticateToken, (req, res) => {
   res.json({ msg: "Acceso concedido", user: req.user });
 });
 
-///////////////////////////////////////////////////////////////////////////////////////
-// INTENTO CONEXIÓN CON BD
-const pool = mariadb.createPool({
-  host: "localhost",
-  user: "root",
-  password: "1234",
-  database: "proyectog5",
-  connectionLimit: 5,
-});
-
 const dataFolderPath = path.join(__dirname);
 
 app.use(cors());
@@ -142,9 +140,14 @@ app.get("/sell/:id", (req, res) => {
   res.sendFile(filePath);
 });
 
-app.get("/user_cart/:id", (req, res) => {
+app.get("/user_cart/:id", authenticateToken, (req, res) => {
+  //const userId = parseInt(req.params.id, 10);
   const userId = req.params.id;
-  const filePath = path.join(dataFolderPath, `user_cart`, `${userID}.json`);
+  //if (req.user.id !== userId) {
+  if (parseInt(userId) !== req.params.id) {
+    return res.status(403).json({ error: "No autorizado" });
+  }
+  const filePath = path.join(dataFolderPath, `user_cart`, `${userId}.json`);
   res.sendFile(filePath);
 });
 app.get("/nav.html", (req, res) => {
@@ -157,4 +160,14 @@ app.listen(puerto, () => {
 
 app.get("/", (req, res) => {
   res.send("Servidor funcionando!");
+});
+
+///////////////////////////////////////////////////////////////////////////////////////
+// INTENTO CONEXIÓN CON BD
+const pool = mariadb.createPool({
+  host: "localhost",
+  user: "root",
+  password: "1234",
+  database: "proyectog5",
+  connectionLimit: 5,
 });
