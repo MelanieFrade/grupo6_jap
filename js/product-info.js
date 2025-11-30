@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // MOSTRAR LOS DETALLES DEL PRODUCTO SELECCIONADO
-  //let url = `http://localhost:3000/products/${prodID}`;
   let url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
   fetch(url)
