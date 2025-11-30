@@ -2,7 +2,16 @@ const express = require("express"); // utilizando el framework
 const app = express(); //instancia de express
 const puerto = 3000; //puerto que voy a escuchar
 const path = require("path") 
-const cors = require("cors");
+const cors = require("cors")
+const mariadb = require('mariadb'); //libreria para conectar con base de datos mariaDB
+
+const pool = mariadb.createPool({
+  host: "localhost", 
+  user: "root", 
+  password: "1234", 
+  database: "proyectog5" 
+  connectionLimit: 5
+});
 
 const dataFolderPath = path.join(__dirname);
 
