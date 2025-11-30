@@ -93,7 +93,7 @@ const dataFolderPath = path.join(__dirname);
 app.use(cors());
 
 // Servir frontend entero
-app.use(express.static(path.join(__dirname, "../Frontend")));
+app.use(express.static(path.join(__dirname, "..")));
 
 app.use("/api", express.static(path.join(__dirname, "api")));
 
