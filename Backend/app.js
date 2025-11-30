@@ -1,25 +1,20 @@
 const express = require("express"); // utilizando el framework
 const app = express(); //instancia de express
-const puerto = process.env.PORT || 3000; //3000; //puerto que voy a escuchar
-const path = require("path");
 const cors = require("cors");
-const mariadb = require("mariadb"); //libreria para conectar con base de datos mariaDB
 const jwt = require("jsonwebtoken");
+const path = require("path");
+const mariadb = require("mariadb"); //libreria para conectar con base de datos mariaDB
 
-/*app.use(
-  cors({
-    origin: "http://localhost:5500", // o "http://localhost:5500" según tu Live Server
-    allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);*/
+const puerto = process.env.PORT || 3000; //puerto que voy a escuchar
 
+const JWT_SECRET = process.env.JWT_SECRET || "clave_segura";
+const JWT_EXPIRES_IN = "1h"; // ajustar según necesidad
+
+app.use(cors());
 app.use(express.json());
 
 // AUTENTICACIÓN Y MIDDLEWARE
 // Config (usa variables de entorno en producción)
-const JWT_SECRET = process.env.JWT_SECRET || "clave_segura";
-const JWT_EXPIRES_IN = "1h"; // ajustar según necesidad
 
 const users = [
   { id: 1, username: "nombre@mail.com", password: "nombre123" },
@@ -82,6 +77,16 @@ function authenticateToken(req, res, next) {
   });
 }
 
+async function getJSONDataAuth(url) {
+  const token = localStorage.getItem("token");
+  let headers = {};
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  const res = await fetch(url, { headers });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
 // --- Ejemplo de ruta protegida ---
 app.get("/api/protected", authenticateToken, (req, res) => {
   // req.user viene del token
@@ -141,10 +146,10 @@ app.get("/sell/:id", (req, res) => {
 });
 
 app.get("/user_cart/:id", authenticateToken, (req, res) => {
-  //const userId = parseInt(req.params.id, 10);
-  const userId = req.params.id;
-  //if (req.user.id !== userId) {
-  if (parseInt(userId) !== req.params.id) {
+  const userId = parseInt(req.params.id, 10);
+  //const userId = req.params.id;
+  if (req.user.id !== userId) {
+    //if (parseInt(userId) !== req.params.id) {
     return res.status(403).json({ error: "No autorizado" });
   }
   const filePath = path.join(dataFolderPath, `user_cart`, `${userId}.json`);

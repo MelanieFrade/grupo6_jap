@@ -11,10 +11,36 @@ loginBtn.addEventListener("click", () => {
   container.classList.remove("active");
 });
 
+async function doLogin(username, password) {
+  try {
+    const res = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      alert(data.error || "Error al iniciar sesión");
+      return false;
+    }
+
+    // Guardar token y usuario
+    localStorage.setItem("token", data.token);
+    sessionStorage.setItem("estaLogueado", "true");
+    sessionStorage.setItem("username", data.user.username);
+    return true;
+  } catch (err) {
+    console.error("Error de red:", err);
+    alert("Error de red al intentar iniciar sesión");
+    return false;
+  }
+}
+
 // VALIDACIÓN LOGIN
-document.getElementById("btnLogin").addEventListener(
-  "click",
-  /*async*/ function (e) {
+document
+  .getElementById("btnLogin")
+  .addEventListener("click", async function (e) {
     e.preventDefault();
     let username = document.getElementById("login-username").value.trim();
     let password = document.getElementById("login-password").value.trim();
@@ -35,38 +61,13 @@ document.getElementById("btnLogin").addEventListener(
       return;
     }
 
-    /*try {
-      //https://japceibal.github.io/emercado-api/cats_products/${catID}.json
-      const res = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+    const ok = await doLogin(username, password);
+    if (ok) window.location.href = "index.html";
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || "Error al iniciar sesión");
-        return;
-      }
-
-      // Guardar token y user para usar en el front
-      localStorage.setItem("token", data.token); // token persistente
-      sessionStorage.setItem("estaLogueado", "true");
-      sessionStorage.setItem("username", data.user.username);
-
-      // opcional: redirigir
-      window.location.href = "index.html";
-    } catch (err) {
-      console.error(err);
-      alert("Error de red al intentar iniciar sesión.");
-    }*/
-
-    sessionStorage.setItem("estaLogueado", "true");
+    /* sessionStorage.setItem("estaLogueado", "true");
     sessionStorage.setItem("username", username);
-    window.location.href = "index.html";
-  }
-);
+    window.location.href = "index.html";*/
+  });
 
 // VALIDACIÓN REGISTRO
 document.getElementById("btnRegister").addEventListener("click", function (e) {
