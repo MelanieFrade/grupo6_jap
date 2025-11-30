@@ -104,7 +104,6 @@ function sortAndShowProducts(sortCriteria, productsArray) {
 
 document.addEventListener("DOMContentLoaded", function (e) {
   const catID = localStorage.getItem("catID");
-  //let url = `http://localhost:3000/cats_products/${catID}`;
   let url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
   fetch(url)
     .then((response) => {
